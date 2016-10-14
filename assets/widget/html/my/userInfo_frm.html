@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+		<title>title</title>
+		<link rel="stylesheet" type="text/css" href="../../styles/base/api.css"/>
+		<link rel="stylesheet" type="text/css" href="../../styles/base/sm.css"/>
+		<link rel="stylesheet" type="text/css" href="../../styles/mods/header_level2.css"/>
+		<link rel="stylesheet" href="../../styles/userInfo.css">
+		<!--build:js scripts/common.js -->
+		<script   src="../../scripts/lib/requirejs/require.js"></script>
+		<script type="text/javascript" src='../../scripts/common.js'></script>
+		<!-- endbuild -->
+		<script type="text/javascript" src='../../scripts/rev_rjs.js'></script>
+	</head>
+	<body>
+		<div class="page">
+			<div class="content">
+				<!--<div class="list-block media-list userinfo" >
+				<div class="wbox">
+				<div class="item-media">
+				<img src="../../images/my/avatar.jpg" width="80">
+				</div>
+				<div class="wbox-flex item-info">
+				<div class="item-title-row">
+				<div class="item-title">
+				1861*****41
+				</div>
+				</div>
+				<div class="item-subtitle"></div>
+				</div>
+				</div>
+				</div>-->
+				<div class="list-block myList" id="myList">
+					<ul>
+						<li class="item-content item-link no-arrow"  data-src="username">
+							<div class="item-inner">
+								<div class="item-title">
+									用户名
+								</div>
+								<div class="item-after" id="username">
+									112345687
+								</div>
+							</div>
+						</li>
+						<li class="item-content item-link"  data-src="fullName">
+							<div class="item-inner">
+								<div class="item-title">
+									姓名
+								</div>
+								<div class="item-after" id="temp-fullName">
+								</div>
+							</div>
+						</li>
+						<li class="item-content item-link" data-src="qq">
+							<!--<div class="item-media"><i class="icon icon-f7"></i></div>-->
+							<div class="item-inner">
+								<div class="item-title">
+									qq号			
+								</div>
+								<div class="item-after" id="temp-qq">
+								</div>
+							</div>
+						</li>
+						<li class="item-content item-link"  data-src="introduce">
+							<!--<div class="item-media"><i class="icon icon-f7"></i></div>-->
+							<div class="item-inner">
+								<div class="item-title">
+									个人说明
+								</div>
+								<div class="item-after" id="temp-introduce">
+								</div>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script type='text/javascript' src='../../scripts/api.js' charset='utf-8'></script>
+	<script type='text/javascript' src='../../scripts/lib/zeptojs/zepto.min.js' charset='utf-8'></script>
+	<script type='text/javascript' src='../../scripts/sm.js' charset='utf-8'></script>
+	<script type='text/javascript' src='../../scripts/app/TD_CONFIG.js' charset='utf-8'></script>
+	<script>
+		requirejs.config({
+			baseUrl : '../../scripts/lib'
+		});
+	</script>
+	<script type='text/javascript' src='../../scripts/app/userInfo_frm.js' charset='utf-8'></script>
+</html>

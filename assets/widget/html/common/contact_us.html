@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+		<title>title</title>
+		<link rel="stylesheet" href="../../styles/base/api.css">
+	    <link rel="stylesheet" href="../../styles/base/sm.css">
+	    <link rel="stylesheet" href="../../styles/mods/header_level2.css">
+	    <link rel="stylesheet" href="../../styles/login.css">
+		<!--build:js scripts/common.js -->
+		<script   src="../../scripts/lib/requirejs/require.js"></script>
+		<script type="text/javascript" src='../../scripts/common.js'></script>
+		<!-- endbuild -->
+		<script type="text/javascript" src='../../scripts/rev_rjs.js'></script>
+		<style>.page{display:block;}</style>
+	</head>
+	<body>
+		<div class="page">
+			<div id="header_placeholder"></div>
+			<div class="content-padded" ><span  class="external" onclick="callphone()">联系电话：025-68150303</span></div>
+		</div>
+	</body>
+	<script type='text/javascript' src='../../scripts/api.js' charset='utf-8'></script>
+	<script type='text/javascript' src='../../scripts/lib/zeptojs/zepto.min.js' charset='utf-8'></script>
+	<!--<script type='text/javascript' src='../../scripts/sm.js' charset='utf-8'></script>-->
+	<script>
+		requirejs.config({
+			baseUrl : '../../scripts/lib'
+		});
+	</script>
+	<script type="text/javascript">
+		apiready = function() {
+			$(function() {
+				require(['scripts/mods/header_level2'], function(header) {
+					var header = new header.header_level2({
+						type : 'contact_us'
+					});
+					
+				});
+			});
+		};
+		function callphone() {
+		    api.call({
+		        type: 'tel_prompt',//'tel',//
+		        number: '025-68150303'
+		    });
+		}
+	</script>
+</html>

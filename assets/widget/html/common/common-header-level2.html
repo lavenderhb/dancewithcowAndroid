@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <title>title</title>
+    <link rel="stylesheet" type="text/css" href="../../styles/base/api.css"/>
+    <link rel="stylesheet" type="text/css" href="../../styles/base/sm.css"/>
+    <link rel="stylesheet" type="text/css" href="../../styles/mods/header_level2.css"/>
+    <style>
+    	#btn-save{display:none;}
+    	#wrapper{height: 2rem;
+		  border-bottom: none;
+		  background-color: #f6f6f6;}
+		#scroller{background-color: #fff;}
+    	#scroller li{
+		  font-size: 0.85rem;
+		  font-family: "Microsoft YaHei",Arial,Helvetica,sans-serif,"宋体";  width: 8.3%;  line-height: 1.8rem;}
+		  #scroller li span{color: #474747;}
+		#scroller .nav_active span{
+		  color: #ea5a5a;
+		  font-size: 0.85rem !important;
+		  position: relative;
+		}
+    	#scroller .nav_active span:after{
+    	position: absolute;
+		  top: auto;
+		  right: auto;
+		  bottom: 0;
+		  left: 0;
+		  z-index: 15;
+		  display: block;
+		  width: 100%;
+		  height: 2px;
+		  content: '';
+		  background-color: #ea5a5a;
+		  -webkit-transform-origin: 50% 100%;
+		  -ms-transform-origin: 50% 100%;
+		  -o-transform-origin: 50% 100%;
+		  transform-origin: 50% 100%;
+    	}
+        /*2016-0630 header style start*/
+       
+       .back{display:none;  position: absolute;}
+       .bar-nav {
+		  box-sizing: content-box;
+		  position: relative;
+		  padding-right: 0;
+		    overflow-x: hidden;
+		}
+        .bar-nav {
+		  background-color: #fe4e25;
+		}
+        .title{  color: #fff;
+		  font-size: 1rem;
+		}
+		.back:before{  background: url(../../images/back4.png);  background-repeat: no-repeat;
+		  width: 1rem;
+		  height: 1rem;
+		  background-size: 100%;}
+		  .td-search {
+				  background-image: url(../../images/search3.png);
+				  background-size: 1.2rem;
+				  width: 2rem;
+				  height: 2rem;
+				  display: block;
+				  background-repeat: no-repeat;
+				  background-position: 50% 60%;
+				}
+				.right-wrap{position: absolute;
+		  right: 0;  
+		  top: 0;}
+		  .hide{display: none;}
+        /*2016-0630 header style end*/
+       /*button-row style start*/
+      .buttons-row{margin-left:1.2rem;margin-top: .35rem;}
+      .bar .button{top:0;}
+	  .buttons-row .button{  border:none;background-color: #474747;color:#fff;line-height:2;  border-color: #fff;}
+	  .buttons-row .button span{color:#fff;}
+	  
+	  .buttons-row .button.active{background-color: #fff;color:#ee4a49;}
+	  .button.active:active {
+		  border-color: #fff;
+	  }
+	  .buttons-row .button.active span{color:#ee4a49;}
+	  .bar .button .icon{color:#fff;}
+	  .pr{    position: relative;}
+      .page .buttons-row {
+		  width: 11rem;
+		  margin: 0.4rem auto;
+		    padding-left: 0;
+		}
+		.buttons-row .button{width:5.5rem;}
+		/*button-row style end*/
+    </style>
+</head>
+<body>
+    <div class="page">
+    	<header class="bar bar-nav" id="header">
+				<div>
+					<a class="td-icon back pull-left" id="back"></a>
+					<h1 class="title" id="title"></h1>
+				</div>
+				<div class="right-wrap" id="right-wrap">
+					<span class="pull-right icon td-search hide" id="search" tapmode=""></span>
+				</div>
+				<div class="buttons-row hide" id="cus-tab">
+				    <a href="#tab1" class="tab-link active button"  data-from="{{data['headerTab']['from1']}}"><span class="pr" id="tab1"></span></a>
+				    <a href="#tab2" class="tab-link button" data-from="{{data['headerTab']['from2']}}"><span class="pr">互动大厅
+				    <span id="interactTip"></span>
+				    </a>
+				</div>
+	   </header>
+	   <nav id="nav">
+			<!--<div id="wrapper">
+				<div id="scroller" class="content-inner">
+					<ul>
+						<li data-index="{{i}}" id="{{value.cid }}" class="nav_active" tapmode="" ><span>趣闻</span></li>
+						<li data-index="{{i}}" id="{{value.cid }}"  tapmode="" ><span>趣闻</span></li>
+						<li data-index="{{i}}" id="{{value.cid }}"  tapmode="" ><span>趣闻</span></li>
+						<li data-index="{{i}}" id="{{value.cid }}"  tapmode="" ><span>趣闻</span></li>
+						<li data-index="{{i}}" id="{{value.cid }}"  tapmode="" ><span>趣闻</span></li>
+						<li data-index="{{i}}" id="{{value.cid }}"  tapmode="" ><span>趣闻</span></li>
+					</ul>
+				</div>
+			</div>-->
+	  </nav>
+    </div>
+    <script id="tpl" type="text/html">
+	    <div id="wrapper">
+			<div id="scroller" class="content-inner">
+				<ul>
+				    {{each data as value i}}
+				    {{if i==0}}
+					<li data-index="{{i}}" id="{{value.cid }}" class="nav_active" tapmode="" ><span>{{value.name}}</span></li>
+					{{else}}
+					<li data-index="{{i}}" id="{{value.cid }}"  tapmode="" ><span>{{value.name}}</span></li>
+					{{/if}}
+		            {{/each}}
+				</ul>
+			</div>
+		</div>
+	</script>
+</body>
+<script type='text/javascript' src='../../scripts/api.js' charset='utf-8'></script>
+<script type='text/javascript' src='../../scripts/lib/zeptojs/zepto.min.js' charset='utf-8'></script>
+<script type='text/javascript' src='../../scripts/sm.js' charset='utf-8'></script>
+<script type='text/javascript' src='../../scripts/app/TD_CONFIG.js' charset='utf-8'></script>
+<script type='text/javascript' src='../../scripts/app/qqq.js' charset='utf-8'></script>
+<script type='text/javascript' src='../../scripts/lib/template.js' charset='utf-8'></script>
+<!--<script type='text/javascript' src='../../scripts/mods/nav-iscroll.js' charset='utf-8'></script>-->
+<script type="text/javascript">
+    var page;
+    var $title;
+	apiready = function(){
+	    var header = $api.byId("header");
+		$api.fixIos7Bar(header);
+		//头部右侧搜索图标是绝对定位，需要强制沉浸式
+		var rightwrap=$api.byId("right-wrap");
+		$api.fixIos7Bar(rightwrap);
+		api.setStatusBarStyle({
+		    style: 'light'
+		});
+		var h=$("#header").height();
+	    page=api.pageParam.page;
+	    var pageurl=api.pageParam.pageurl;
+	    var param=api.pageParam.param;
+	    var title=api.pageParam.title;
+	    var isshow_btnsave=api.pageParam.isshow_btnsave;
+	    var isshow_tab=api.pageParam.isshow_tab;
+	    var btnsave=api.pageParam.btnsave;
+	    $title=$("#title");
+	    var $btnsave=$("#search");
+	    var allowEdit=api.pageParam.allowEdit?api.pageParam.allowEdit:false;
+	    
+	    $title.html(title);
+	    
+	    if(page&&page!=""){
+	       
+	        if(isshow_btnsave){
+	           $btnsave.show();
+	           bindBtnSaveEvt(page);
+	        }
+	        if(isshow_tab){
+	        	$("#cus-tab").removeClass("hide");
+	        	var tabname1=api.pageParam.tabname1;
+	        	$("#tab1").html(tabname1);
+	        	bindCusTabEvt();
+	        	initCusTabData();
+	        }
+           // alert("param"+JSON.stringify(param));
+        	openFrame(page,pageurl,h,param,allowEdit);
+	        
+	    }
+        if(api.pageParam.closebackbtn){
+        	$("#back").hide();
+        }
+        else{
+            $("#back").show();
+        	//绑定返回按钮事件
+		    bindBackEvt();
+        }
+        
+	};
+	function openFrame(page,pageurl,y,param,allowEdit){
+		api.openFrame({
+	        name: page,
+	        url: pageurl,
+	        rect: {
+		        x:0,
+		        y:y,
+		        w:'auto',
+		        h:'auto'
+	        },
+	        pageParam:param,
+	        allowEdit:allowEdit
+        });
+	}
+	function bindBtnSaveEvt(page){
+		$("#search").on("click",function(){
+			api.openWin({
+				name : 'search',
+				url : 'search_window.html',
+				slidBackEnabled:false,
+				bounces : true,
+				delay : 200
+			}); 
+		});
+	}
+	/*互动大厅  start*/
+	function initCusTabData(){
+        //未读信息0:私聊;1:群发
+        var uid=$api.getStorage("uid");
+        if(uid&&uid!=""){
+            var csid=$api.getStorage("csid");
+            if(!csid||csid==""){
+                 getAjaxData(csidCallBack);
+            }
+            else{
+                csidCallBack();
+            }
+        }
+	}
+	function csidCallBack(){
+	   var csid=$api.getStorage("csid");
+       if(csid&&csid!=""){
+          getUnReadDataAjax(getMsg,0,"interact");
+       }
+	}
+	function getUnReadDataAjax(callback,type,pageType){
+        var csid=$api.getStorage("csid");
+        var uid=$api.getStorage("uid");
+        var id="msg_unread_"+type+"_"+csid;
+        var folder = "cartype";
+        var url=td.domain+"/chat/unread/"+csid+"/"+uid+"/"+type+"?token="+td.token;
+        var method="get";
+        var params="";
+        var async="true";
+        doCache(folder,id,url,method,params,async,function(data){
+            //alert(JSON.stringify(data));
+            var finalData=data.data;
+            if(data.code==200){
+               var $msgTip=$("#"+pageType+"Tip");
+               //alert("finalData.count"+finalData.count);
+               callback(finalData.count,$msgTip);
+            }
+            else{
+                //toast(data.data);
+            }
+        });
+    }
+    function getMsg(unRead,$msgTip){
+        if(unRead==0){
+            $msgTip.hide();
+        }
+        else{
+            //$msgTip.html(unRead);
+            $msgTip.show();
+        }
+    }
+	function bindCusTabEvt(){
+		$("#cus-tab").on("click", ".tab-link", function(e) {
+		    if($(this).hasClass("active")){
+		    	return;
+		    }
+		    else{
+		       clearUnreadStatus("interact");
+		       toInteract();
+		    }
+		    
+		});
+	}
+	function toInteract(){
+		var uid=$api.getStorage("uid");
+        if(!uid||uid==""){
+        	api.openWin({
+				name : 'login',
+				url : 'login.html',
+				bounces : false,
+				animation : 'push',
+				scrollToTop : true,
+				rect : {
+					x : 0,
+					y : 0,
+					w : 'auto',
+					h : 'auto'
+				}
+			});
+        }
+        else{
+            if(api.connectionType=="none"){
+           	   toast("请检查网络连接");
+               return;
+           }
+           var csid=$api.getStorage("csid");
+            if(!csid||csid==""){
+                 getAjaxData(interactCallBack,true);
+            }
+            else{
+                 interactCallBack();
+            }
+            
+        }
+	}
+	function clearUnreadStatus(pageType){
+        var $msgTip=$("#"+pageType+"Tip");
+        $msgTip.hide();
+    }
+    function getAjaxData(callback,displayToast){
+        var uid=$api.getStorage("uid");
+        try{
+	        api.ajax({
+                url: td.domain+"/isallowcus/"+uid+"?token="+td.token,
+                method: "get"
+            },function(ret, err){
+                if (ret) {
+                     if(ret.code==200){
+                        $api.setStorage("csid",ret.data.csid);
+                        $api.setStorage("cname",ret.data.name);
+                        callback();
+                     }
+                     else if(ret.code==201){
+                       if(displayToast){
+                            toast("未分配客服");
+                       }
+                       
+                     }
+                     else{
+                        if(displayToast){
+                            toast("没有会员ID");
+                        }
+                     } 
+                     
+                } else {
+                    toast("网络异常，请稍后重试");
+                }
+            });
+        }catch(err){
+        	toast("系统异常，请稍后重试");
+        }
+    }
+    function interactCallBack(){
+	    var csid=$api.getStorage("csid");
+        var cname=$api.getStorage("cname");
+        if(csid&&csid!=""){
+            api.openWin({
+                name : 'interact',
+                url : '../public/interact.html',
+                bounces : false,
+                delay : 200,
+                pageParam:{csid:csid,cname:cname}
+            });
+        }
+	}
+    function toast(msg){
+		api.toast({
+	        msg: msg,
+	        duration:1000,
+	        location: 'middle'
+	    });
+	}
+	/*互动大厅  end*/
+	function bindBackEvt(){
+		$("#back").on("click",function(){
+		    if(page=="register"){
+		    	api.execScript({
+		    	    name:"root",
+		    	    frameName:"my",
+	                script: 'resetInit();'
+                });
+                api.execScript({
+		    	    name:"root",
+		    	    frameName:"business-my",
+	                script: 'resetInit();'
+                });
+                
+		    }
+		    else if(page=="dingzhilist"){
+		    	var isfromRoot=api.pageParam.isfromRoot;
+		    	if(isfromRoot&&isfromRoot>0){
+		    		api.closeToWin({
+					    name: 'root'
+					});
+		    	}
+		    }
+			api.closeWin({
+            });
+		});
+		
+	}
+	function setHeaderDelteStyle(flag){
+		if(flag==1){
+		//要隐藏删除按钮
+			$("#btn-save").hide();
+		}
+		else{
+			$("#btn-save").show();
+		}
+	}
+	
+</script>
+</html>

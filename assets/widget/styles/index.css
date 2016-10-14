@@ -1,0 +1,41 @@
+
+.bar-nav{overflow-x:hidden;background-color: #ee4a49;}
+.bar-tab{background-color: #fff;  }
+.bar-tab:before{background-color: #ddd;}
+.page{overflow-x:hidden;}
+.bar-tab .tab-item {color:#666;  vertical-align: top;}
+.bar-tab .tab-item.active, .bar-tab .tab-item:active{color:#ee4a49;}
+.td-home{ background-image: url(../images/home.png);
+  background-size: 1.25rem;
+  width: 1.25rem;
+  height: 1.25rem;
+  display: block;}
+.td-friends{ background-image: url(../images/hudong.png);
+  background-size: 1.25rem;
+  width: 1.25rem;
+  height: 1.25rem;
+  display: block;}
+.td-news{ background-image: url(../images/news.png);
+   background-size: 1.25rem;
+  width: 1.25rem;
+  height: 1.25rem;
+  display: block;}
+.td-my{ background-image: url(../images/my.png);
+  background-size: 1.25rem;
+  width: 1.25rem;
+  height: 1.25rem;
+  display: block;}
+.bar-tab .tab-item.active .td-home, .bar-tab .tab-item:active .td-home{
+ background-image: url(../images/home-active.png);
+}
+.bar-tab .tab-item.active .td-friends, .bar-tab .tab-item:active .td-friends{
+ background-image: url(../images/hudong-active.png);
+}
+.bar-tab .tab-item.active .td-news, .bar-tab .tab-item:active .td-news{
+ background-image: url(../images/news-active.png);
+}
+.bar-tab .tab-item.active .td-my, .bar-tab .tab-item:active .td-my{
+ background-image: url(../images/my-active.png);
+}
+.bar-tab .tab-item .icon{margin:0 auto; margin-top: .1rem;}
+.bar-tab .tab-item .icon ~ .tab-label{top:.3rem;}

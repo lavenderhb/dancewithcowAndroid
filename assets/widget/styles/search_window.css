@@ -1,0 +1,45 @@
+
+html, body {
+    min-height: 100%;
+    overflow-y:auto;
+}
+
+body{position:static;}
+.page{position:static;min-height: 100%;overflow-y: auto;height:auto;}
+.list-block{margin:0;}
+.list-block.media-list .item-title{  font-size: .8rem;
+  color: #ee4a49;  max-width:78%; flex: 1!important;
+  box-flex: 1;}
+.list-block .item-text{max-height: 1.8rem;-webkit-line-clamp: 0;  height: auto;font-size: .7rem;
+  color: #666;  line-height: .9rem;  margin-top: .2rem;}
+  .list-block .item-after{color: #aaa;
+  font-size: .55rem;margin-top: .2rem;width:3.3rem;}
+.list-block.media-list .item-inner{height:4.95rem;padding-right:0;}
+.list-block .item-date
+{text-align: right;
+  font-size: .6rem;
+ 
+}
+.list-block .item-media + .item-inner{margin-left: .5rem;  padding-top: .8rem;}
+ .list-block .item-content{  padding-left: .6rem;   border-bottom: 1px solid #ddd; }
+ .list-block .item-inner:after{height:0;}
+ .search-wrap .search-input .close-input{
+     height: 1.7rem;
+    position: absolute;
+    right: 0rem;
+    top: 0;
+    z-index: 10;
+    width: 2rem;
+ 
+ }
+ .search-wrap .search-input{border: 1px solid #ddd;
+    border-radius: .15rem;
+    padding-right: 2rem;
+    background-color: #fff;
+    height: 1.8rem;
+    line-height: 1;}
+    .search-wrap .search-input label + input{
+    
+        border: none;
+    padding-right: 0;
+    }

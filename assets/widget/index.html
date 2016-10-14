@@ -1,0 +1,251 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+		<title>底部导航</title>
+		<link rel="stylesheet" type="text/css" href="styles/base/sm.css"/>
+		<link rel="stylesheet" type="text/css" href="styles/base/sm-extend.css"/>
+		<link rel="stylesheet" type="text/css" href="styles/mods/header_level1.css"/>
+		<link rel="stylesheet" type="text/css" href="styles/mods/nav-iscroll.css?v=20160628"/>
+		<link rel="stylesheet" type="text/css" href="styles/index.css"/>
+		<!--build:js scripts/common.js -->
+		<script type="text/javascript"  src="scripts/lib/requirejs/require.js"></script>
+		<script type="text/javascript" src='scripts/common.js'></script>
+		<!-- endbuild -->
+		<script type="text/javascript" src='scripts/rev_rjs.js'></script>
+		<style>
+		/*header style start*/
+		body{font-family: "Microsoft YaHei",Arial,Helvetica,sans-serif,"宋体";color:#383838;}
+		.hide{display: none;}
+		.page .title {  height: 2.2rem;}
+		.title img{  height: 1.3rem; width: auto;padding-top: 0.2rem;}
+		  .main-title{width: 2rem;
+		  height: 1.4rem;  background-size: 100%;  margin-top: 0.4rem;
+		  background-position: 50% 50%;}
+		.bar-nav{  background-color: #fe4e25;}
+		.td-search {
+		  background-image: url(images/search3.png);
+		  background-size: 1.2rem;
+		}
+		.right-wrap{position: absolute;
+  right: 0;  
+  top: 0;}
+		/*header style end*/
+		/*nav iscroll start*/
+		.iscroll-wrapper{    height: 2.1rem;
+  border-bottom: 1px solid #ddd;
+  }
+		.iscroll-scroller{width:100%;  padding: 0 0.5rem;}
+		.iscroll-scroller li{width:25%;color:#383838;  height: 2.05rem;
+  line-height: 2.05rem;}
+        .iscroll-scroller .nav_active{color: #ff6600;
+        font-size: 0.7rem !important; border-bottom: 2px solid #ff6600;}
+		/*nav iscroll end*/
+		/*资讯 头部iscroll start*/
+		.zixun-title-wrap{margin-right: 2.5rem;}
+		.zixun-title-wrap .iscroll-scroller li{color:#fff;font-size: 0.85rem;  width: 30%;}
+		.zixun-title-wrap .iscroll-scroller .nav_active{
+        font-size: 0.85rem !important; border-bottom:none;}
+        .zixun-title-wrap .iscroll-wrapper{height:2.2rem;}
+        .zixun-title-wrap .iscroll-scroller li{  height: 2.2rem;  line-height: 2rem;}
+        .zixun-title-wrap .iscroll-scroller span{height:1.8rem;   line-height: 1.8rem;  display: inline-block;}
+        .zixun-title-wrap .iscroll-scroller .nav_active span{
+		  position: relative;
+		}
+    	.zixun-title-wrap .iscroll-scroller .nav_active span:after{
+    	position: absolute;
+		  top: auto;
+		  right: auto;
+		  bottom: 0;
+		  left: 0;
+		  z-index: 15;
+		  display: block;
+		  width: 100%;
+		  height: 2px;
+		  content: '';
+		  background-color: #fff;
+		  -webkit-transform-origin: 50% 100%;
+		  -ms-transform-origin: 50% 100%;
+		  -o-transform-origin: 50% 100%;
+		  transform-origin: 50% 100%;
+    	}
+    	/*资讯 头部iscroll end*/
+    	/*button-row style start*/
+    	.buttons-row {
+		  width: 12rem;
+		  margin: 0.35rem auto;
+		  padding-right: 0.5rem;
+		}
+		.buttons-row .button{width:6rem;}
+		/*button-row style end*/
+    	#nav{display:none;}
+    	#nav452{display:none;}
+    	#nav487{display:none;}
+		</style>
+	</head>
+	<body>
+		<!-- 你的html代码 -->
+		<div class="page" id="index">
+		    <header class="bar bar-nav " id="header">
+				<div class="title-wrap hide" id="title-wrap">
+					<a class="button button-link button-nav pull-left" href="/demos/card" data-transition='slide-out'> <span class="icon icon-left"></span>{{data["headerM"]["city"]}}</a>
+					<h1 class="title hide" id="main-title"><i class="main-title"></i><img src="images/main-title.png"  /></h1>
+					<h1 class="title hide" id="title"></h1>
+				</div>
+				<div class="zixun-title-wrap hide" id="zixun-title-wrap">
+					<!--<div id="wrapper-zixun" class="iscroll-wrapper">
+						<div id="scroller-zixun" class="content-inner iscroll-scroller">
+							<ul>
+								<li data-index="0" id="" class="nav_active" tapmode="" ><span>头条</span></li>
+								<li data-index="1" id=""  tapmode="" data-hidesubnav="1"><span>快讯</span></li>
+								<li data-index="2" id=""  tapmode="" ><span>专栏</span></li>
+							</ul>
+						</div>
+					</div>-->
+				</div>
+				<div class="right-wrap" id="right-wrap">
+					<span class="pull-right icon td-search hide" id="search" tapmode=""></span>
+					
+					<button class="button button-link button-nav pull-right hide" >
+						ssss
+						<span class="icon icon-right"></span>
+					</button>
+					
+				</div>
+				<div class="buttons-row hide" id="cus-tab">
+				    <a href="#tab1" class="tab-link active button"  data-from="{{data['headerTab']['from1']}}"><span class="pr">tab1</span></a>
+				    <a href="#tab2" class="tab-link button" data-from="{{data['headerTab']['from2']}}"><span class="pr">tab2
+				    <span id="interactTip"></span>
+				    </a>
+				</div>
+				
+			</header>
+			<!--以下首页主菜单的 nav-->
+			<nav id="nav">
+				<!--<div id="wrapper" class="iscroll-wrapper">
+					<div id="scroller" class="content-inner iscroll-scroller">
+						<ul>
+							<li data-index="{{i}}" id="{{value.id }}" class="nav_active" tapmode="" >qqqqq</li>
+							<li data-index="{{i}}" id="{{value.id }}"  tapmode="" >rrrrrr</li>
+							<li data-index="{{i}}" id="{{value.id }}"  tapmode="" >yyyyyy</li>
+							<li data-index="{{i}}" id="{{value.id }}"  tapmode="" >kkkkkk</li>
+						</ul>
+					</div>
+				</div>-->
+			</nav>
+			<!--以下头条 子菜单的 nav-->
+			<nav id="nav452">
+				<!--<div id="wrapper" class="iscroll-wrapper">
+					<div id="scroller" class="content-inner iscroll-scroller">
+						<ul>
+							<li data-index="{{i}}" id="{{value.id }}" class="nav_active" tapmode="" >qqqqq</li>
+							<li data-index="{{i}}" id="{{value.id }}"  tapmode="" >rrrrrr</li>
+							<li data-index="{{i}}" id="{{value.id }}"  tapmode="" >yyyyyy</li>
+							<li data-index="{{i}}" id="{{value.id }}"  tapmode="" >kkkkkk</li>
+						</ul>
+					</div>
+				</div>-->
+			</nav>
+			<!--以下专栏 子菜单的 nav-->
+			<nav id="nav487">
+				<!--<div id="wrapper" class="iscroll-wrapper">
+					<div id="scroller" class="content-inner iscroll-scroller">
+						<ul>
+							<li data-index="{{i}}" id="{{value.id }}" class="nav_active" tapmode="" >qqqqq</li>
+							<li data-index="{{i}}" id="{{value.id }}"  tapmode="" >rrrrrr</li>
+							<li data-index="{{i}}" id="{{value.id }}"  tapmode="" >yyyyyy</li>
+							<li data-index="{{i}}" id="{{value.id }}"  tapmode="" >kkkkkk</li>
+						</ul>
+					</div>
+				</div>-->
+			</nav>
+			<div id="nav_bottom_placeholder">
+			    <!--底部导航占位区--> 
+			</div>
+			<nav class="bar bar-tab" id="nav_bottom">
+				<a class="tab-item active" href="#" data-type="main"> <span class="icon td-home"></span> <span class="tab-label">首页</span> </a>
+				<a class="tab-item" href="#" data-type="hangqing"> <span class="icon td-friends"></span> <span class="tab-label">行情</span> </a>
+				<a class="tab-item" href="#" data-type="news"> <span class="icon td-news"></span> <span class="tab-label">资讯</span> </a>
+				<a class="tab-item" href="#" data-type="my"> <span class="icon td-my"></span> <span class="tab-label">我的</span> </a>
+			</nav>
+		</div>
+		<!--资讯主导航 nav 模板 头条，快讯，专栏-->
+		<script id="tpl-zixun" type="text/html">
+		    <div id="wrapper-zixun" class="iscroll-wrapper">
+				<div id="scroller-zixun" class="content-inner iscroll-scroller">
+					<ul>
+					    {{each data as value i}}
+					    {{if i==0}}
+						<li data-index="{{i}}" id="" class="nav_active" tapmode="" data-cid="{{value.onecid}}"><span>{{value.title}}</span></li>
+						{{else}}
+						<li data-index="{{i}}" id=""  tapmode="" data-cid="{{value.onecid}}" {{if value.onecid=="486"}}data-hidesubnav="1"{{/if}}><span>{{value.title}}</span></li>
+						{{/if}}
+			            {{/each}}
+					</ul>
+				</div>
+			</div>
+		</script>
+		<!--首页 nav 模板   新闻精选，行情数据，高手追踪，客服团队-->
+		<script id="tpl" type="text/html">
+		    <div id="wrapper" class="iscroll-wrapper">
+				<div id="scroller" class="content-inner iscroll-scroller">
+					<ul>
+					    {{each data as value i}}
+					    {{if i==0}}
+						<li data-index="{{i}}" id="mainnav{{i}}" data-cid="{{value.cid }}" {{if value.subNav}}data-subnav="1"{{/if}} class="nav_active" tapmode="" >{{value.title}}</li>
+						{{else}}
+						<li data-index="{{i}}" id="mainnav{{i}}" data-cid="{{value.cid }}"  {{if value.subNav}}data-subnav="1"{{/if}} tapmode="" >{{value.title}}</li>
+						{{/if}}
+			            {{/each}}
+					</ul>
+				</div>
+			</div>
+		</script>
+		<!--资讯 头条子nav 模板   -->
+		<script id="tpl452" type="text/html">
+		    <div id="wrapper452" class="iscroll-wrapper">
+				<div id="scroller452" class="content-inner iscroll-scroller">
+					<ul>
+					    {{each data as value i}}
+					    {{if i==0}}
+						<li data-index="{{i}}" data-cid="{{value.cid }}" {{if value.subNav}}data-subnav="1"{{/if}} class="nav_active" tapmode="" >{{value.title}}</li>
+						{{else}}
+						<li data-index="{{i}}" data-cid="{{value.cid }}"  {{if value.subNav}}data-subnav="1"{{/if}} tapmode="" >{{value.title}}</li>
+						{{/if}}
+			            {{/each}}
+					</ul>
+				</div>
+			</div>
+		</script>
+		<!--资讯 专栏子nav 模板   -->
+		<script id="tpl487" type="text/html">
+		    <div id="wrapper487" class="iscroll-wrapper">
+				<div id="scroller487" class="content-inner iscroll-scroller">
+					<ul>
+					    {{each data as value i}}
+					    {{if i==0}}
+						<li data-index="{{i}}" data-cid="{{value.cid }}" {{if value.subNav}}data-subnav="1"{{/if}} class="nav_active" tapmode="" >{{value.title}}</li>
+						{{else}}
+						<li data-index="{{i}}" data-cid="{{value.cid }}"  {{if value.subNav}}data-subnav="1"{{/if}} tapmode="" >{{value.title}}</li>
+						{{/if}}
+			            {{/each}}
+					</ul>
+				</div>
+			</div>
+		</script>
+		<script type='text/javascript' src='scripts/api.js' charset='utf-8'></script>
+		<script type='text/javascript' src='scripts/lib/zeptojs/zepto.min.js' charset='utf-8'></script>
+		<script>
+		$.config = {router: false};
+		</script>
+		<script type='text/javascript' src='scripts/sm.js' charset='utf-8'></script>
+		<script type='text/javascript' src='scripts/sm-extend.js' charset='utf-8'></script>
+		<script type='text/javascript' src='scripts/app/TD_CONFIG.js' charset='utf-8'></script>
+		<script type='text/javascript' src='scripts/app/qqq.js' charset='utf-8'></script>
+		<script type="text/javascript" src="scripts/mods/version.js"></script>
+		<script type='text/javascript' src='scripts/mods/ajpush.js' charset='utf-8'></script>
+		<script type="text/javascript" src="scripts/app/index.js"></script>
+		
+	</body>
+</html>

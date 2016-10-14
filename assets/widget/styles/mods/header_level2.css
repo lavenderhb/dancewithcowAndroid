@@ -1,0 +1,38 @@
+ .bar-nav{ box-sizing: content-box;position: relative;}
+.page .bar .button-nav.pull-right{margin-right:0;}
+.page .bar .button-nav.pull-left{display:none;}
+.page button.button.button-link.button-nav.pull-right {
+  margin: 0 0 0 1rem;
+}
+.page .buttons-row{width: 60%;  margin: 0 auto;padding-left: .8rem;}
+.bar-nav{  background-color: #ee4a49;    padding-left: 0;padding-right: 0;}
+.title{color:#fff;font-size:.9rem;margin: 0;}
+.td-icon{  width: 2rem;
+  height: 2.1rem;
+    position: relative;
+  z-index: 20;
+ padding-left: .5rem;
+  }
+  .back:before {
+  position: absolute;
+  top: .65rem;
+  left: .5rem;
+  z-index: 15;
+  display: block;
+  content: '';
+  background: url(../../images/back.png);
+   width: .9rem;
+  height: .9rem;
+  background-size: .9rem;
+  background-position: center;
+}
+.page button.button.button-link.button-nav.pull-right.btn-save{  height: 1.15rem;
+  line-height: 1;
+  font-size: .65rem;
+  color: #ee4a49;
+  background-color: #fff;
+  padding: 0.3rem 0.5rem;
+  margin-top: .5rem;
+  margin-right: .5rem;
+  }
+ 

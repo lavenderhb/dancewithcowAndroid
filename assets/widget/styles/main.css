@@ -1,0 +1,135 @@
+
+html, body {
+    min-height: 100%;
+    overflow-y:auto;
+}
+
+body{position:static;font-family: "Microsoft YaHei",Arial,Helvetica,sans-serif,"宋体";color:#333;font-size:.7rem;}
+.page{position:static;min-height: 100%;overflow-y: auto;height:auto;  background: #d9d9d9;}
+.wbox {
+  display: -webkit-flex!important;
+  display: -webkit-box;
+}
+.wbox-flex {
+  -webkit-flex: 1!important;
+  -webkit-box-flex: 1;
+  word-wrap: break-word;
+  word-break: break-all;
+}
+.cardIcon{
+  width:1.65rem;
+  height:1.65rem;
+    margin-right: .5rem;
+      margin-top: .45rem;
+}
+.cardIcon img{width:100%;}
+.card-content-inner{padding:.5rem;line-height: 2.5rem;color:#323232;}
+.card-content-inner a{color:#323232;}
+
+.card-content-inner li{position:relative;}
+.card-content-inner li:after {
+  position: absolute;
+  top: auto;
+  right: auto;
+  bottom: 0;
+  left: 0;
+  z-index: 15;
+  display: block;
+  width: 100%;
+  height: 1px;
+  content: '';
+  background-color: #e1e1e1;
+  -webkit-transform-origin: 50% 100%;
+  -ms-transform-origin: 50% 100%;
+  transform-origin: 50% 100%;
+}
+.wealthHots { margin: 0;margin-top:.5rem;}
+.wealthHots .more{position:absolute;right:.5rem;  color: #5c5c5c;
+  font-size: .6rem;  top: .7rem;}
+.wealthHots .card-content-inner{padding:0 .5rem;}
+.mar{margin:.6rem 1.25rem;}
+.gupiao{background:url(../images/main/news/gupiao-bg.png);background-size:16.25rem 3.5rem;}
+.dianxun{background:url(../images/main/news/dianxun-bg.png);background-size:16.25rem 3.5rem;}
+.zhanji{background:url(../images/main/news/zhanji-bg.png);background-size:16.25rem 3.5rem;}
+.card {display:block;}
+.arrow-wrap{position:relative;color:#fff;font-size:.9rem;height: 2.5rem;}
+.arrow-wrap:after{
+  position: absolute;
+  top: auto;
+  right: 0;
+  bottom: .5rem;
+  z-index: 15;
+  display: block;
+  content: '';
+  background: url(../images/main/news/jiantou.png);
+  background-size: 1.5rem 1.5rem;
+  width: 1.5rem;
+  height: 1.5rem;
+ }
+ .wealthHots .card-header{  font-size: .7rem;border-radius:0;color:#171717;  }
+ .wealthHots .card-header span{ border-left: 4px solid #ff0000;  padding-left: .2rem;}
+ .wealthHots .card-content-inner li{color:#303030;font-size:.7rem;  line-height: 2.1rem;}
+  .wealthHots .card-content-inner li a{
+  	display: block;
+  padding-right: 1rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+    color: #5c5c5c;
+  }
+ .wealthHots .card-content-inner li:before {
+  position: absolute;
+  top: .75rem;
+  right: 0;
+  z-index: 15;
+  display: block;
+  content: '';
+ background: url(../images/arrow-right.png);
+  background-size: .6rem .6rem;
+  width: .6rem;
+  height: .6rem;
+}
+/*2016.6.29 增加*/
+/* .icon-list start*/
+.icon-list{
+background-color: #fff;
+  margin-top: .5rem;
+}
+.icon-list .y-item{position:relative;  padding: .5rem .5rem .4rem;  border-bottom: 1px solid #eee;vertical-align: middle;}
+.icon-list .y-item .y-content{  width: 100%;
+  padding-right:2.5rem;  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;vertical-align: middle;  height: 1.5rem;
+  line-height: 1.5rem;}
+.icon-list .y-item img{width:1rem;height:1rem;  vertical-align: middle;margin-right:.2rem; }
+.icon-list .y-item .describ{color:#000; width:90%;  } 
+.describ{white-space: nowrap;text-overflow: ellipsis;overflow: hidden;}
+.y-item .y-rec{background-color: #eb702d;
+  color: #fff;
+  font-size: .65rem;
+  padding: .1rem .5rem;
+  border-radius: 1rem;
+  position: absolute;
+  right: .5rem;top: .65rem;
+  z-index: 2;}
+ /* .icon-list end*/ 
+.icon-list.type-list .y-item:before {
+  position: absolute;
+  top: 1rem;
+  right: .5rem;
+  z-index: 15;
+  display: block;
+  content: '';
+  background: url(../images/arrow-right.png);
+  background-size: .6rem .6rem;
+  width: .6rem;
+  height: .6rem;
+}
+.icon-list.type-list .y-item .y-content{padding-right:1rem;}
+.type-list .y-item .describ{width:92%; }
+.icon-list .y-type{color:#ec5d05;  font-style: normal;}
+.y-img-wrap {
+   position: relative;
+  top:0.3rem;
+}

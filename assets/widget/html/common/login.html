@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+		<title>title</title>
+		<link rel="stylesheet" href="../../styles/base/api.css">
+	    <link rel="stylesheet" href="../../styles/base/sm.css">
+	    <link rel="stylesheet" href="../../styles/mods/header_level2.css">
+	    <link rel="stylesheet" href="../../styles/login.css">
+		<!--build:js scripts/common.js -->
+		<script   src="../../scripts/lib/requirejs/require.js"></script>
+		<script type="text/javascript" src='../../scripts/common.js'></script>
+		<!-- endbuild -->
+		<script type="text/javascript" src='../../scripts/rev_rjs.js'></script>
+	</head>
+	<body>
+		<div class="page">
+			<div id="header_placeholder"></div>
+			
+				<div class="list-block">
+					<ul>
+						<li>
+							<div class="item-content">
+								<div class="item-media">
+									<i class="icon user"></i>
+								</div>
+								<div class="item-inner">
+									<div class="item-input">
+										<input type="text" placeholder="账号" id="username">
+										 <div class="close-input"></div>
+									</div>
+								</div>
+							</div>
+						</li>
+						<li>
+							<div class="item-content">
+								<div class="item-media">
+									<i class="icon password"></i>
+								</div>
+								<div class="item-inner">
+									<div class="item-input">
+										<input type="password" placeholder="密码" id="pwd">
+										 <div class="close-input"></div>
+									</div>
+								</div>
+							</div>
+						</li>
+					</ul>
+				</div>
+				<div class="list-block forgetPass mar">
+					<a class="pull-right"  id="forgetPass">忘记密码?</a>
+				</div>
+				<div class="content-block mar">
+					<div class="col-100">
+						<a href="#" class="button button-big button-fill button-danger" id="btn-login">确认登录</a>
+					</div>
+				</div>
+				<div class="list-block forgetPass mar">
+					<a class="font-normal external" id="goRegister">没有账号，去注册>></a>
+				</div>
+			
+		</div>
+	</body>
+	<script type='text/javascript' src='../../scripts/api.js' charset='utf-8'></script>
+	<script type='text/javascript' src='../../scripts/lib/zeptojs/zepto.min.js' charset='utf-8'></script>
+	<script type='text/javascript' src='../../scripts/sm.js' charset='utf-8'></script>
+	<script type='text/javascript' src='../../scripts/app/TD_CONFIG.js' charset='utf-8'></script>
+	
+	<script>
+		requirejs.config({
+			baseUrl : '../../scripts/lib'
+		});
+	</script>
+	<script type='text/javascript' src='../../scripts/app/login.js' charset='utf-8'></script>
+</html>

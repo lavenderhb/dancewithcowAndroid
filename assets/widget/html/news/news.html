@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+		<meta name="format-detection" content="telephone=no" />
+		<title>title</title>
+		<link rel="stylesheet" type="text/css" href="../../styles/base/api.css"/>
+		<link rel="stylesheet" type="text/css" href="../../styles/base/sm.css"/>
+		<link rel="stylesheet" type="text/css" href="../../styles/news/news.css"/>
+		<!--build:js scripts/common.js -->
+		<script  type="text/javascript"  src="../../scripts/lib/requirejs/require.js"></script>
+		<script type="text/javascript" src='../../scripts/common.js'></script>
+		<!-- endbuild -->
+		<script type="text/javascript" src='../../scripts/rev_rjs.js'></script>
+	</head>
+	<body>
+	    
+		<div id="common-list">
+			<div class="list-block media-list">
+				<ul id="newsList" class="commonNews">
+					<!--<li>
+						<a href="#" class="item-link item-content external" data-aid="{{value.aid}}" data-cid="{{value.cid}}">
+							<div class="item-inner">
+								<div class="item-text">
+									新华社北京6月30日电　6月30日，国家主席习近平致电杜特尔特，祝贺其就任菲律宾共和国第十六任总统。新华社北京6月30日电　6月30日，国家主席习近平致电杜特尔特，祝贺其就任菲律宾共和国第十六任总统。
+								</div>
+								<div class="item-after">
+									<div class="tips-wrap">利好</div>
+									<div class="dates">2016-05-12</div>
+								</div>
+							</div>
+							<div class="item-media"><img src="../../images/lazyImg.jpg" class="cache" data-echo="{{value.image}}" width="80">
+							</div>
+						 </a>
+					</li>
+					<li>
+						<a href="#" class="item-link item-content external" data-aid="{{value.aid}}" data-cid="{{value.cid}}">
+							<div class="item-inner">
+								<div class="item-text">
+									新华社北京6月30日电　6月30日，国家主席习近平致电杜特尔特，祝贺其就任菲律宾共和国第十六任总统。新华社北京6月30日电　6月30日，国家主席习近平致电杜特尔特，祝贺其就任菲律宾共和国第十六任总统。
+								</div>
+								<div class="item-after">
+									<div class="tips-wrap">利好</div>
+									<div class="dates">2016-05-12</div>
+								</div>
+							</div>
+							<div class="item-media"><img src="../../images/lazyImg.jpg" class="cache" data-echo="{{value.image}}" width="80">
+							</div>
+						 </a>
+					</li>-->
+				</ul>
+			</div>
+		</div>
+		<script id="tpl" type="text/html">
+			{{each data as value i}}
+			<li>
+				<a href="#" class="item-link item-content external" data-aid="{{value.aid}}" data-cid="{{value.cid}}">
+					<div class="item-inner">
+						<div class="item-text">
+							{{value.title}}
+						</div>
+						<div class="item-after">
+						    {{if value.isgood=="1"}}
+							<div class="tips-wrap">利好</div>
+							{{/if}}
+							<div class="dates">{{value.times}}</div>
+						</div>
+					</div>
+					<div class="item-media"><img src="../../images/lazyImg.jpg" class="" data-echo="{{value.image}}" >
+					</div>
+				 </a>
+			</li>
+			{{/each}}
+		</script>
+		<script id="tpl-paging" type="text/html">
+			{{each data as value i}}
+			<li>
+				<a href="javascript:;" class="item-link item-content external" data-aid="{{value.aid}}" data-cid="{{value.cid}}">
+					<div class="item-inner">
+						<div class="item-text">
+							{{value.title}}
+						</div>
+						<div class="item-after">
+						    {{if value.isgood=="1"}}
+							<div class="tips-wrap">利好</div>
+							{{/if}}
+							<div class="dates">{{value.times}}</div>
+						</div>
+					</div>
+					<div class="item-media"><img src="{{value.image}}" class="">
+					</div>
+				 </a>
+			</li>
+			{{/each}}
+		</script>
+	</body>
+	<script type='text/javascript' src='../../scripts/api.js' charset='utf-8'></script>
+	<script type='text/javascript' src='../../scripts/lib/zeptojs/zepto.min.js' charset='utf-8'></script>
+	<script type='text/javascript' src='../../scripts/app/TD_CONFIG.js' charset='utf-8'></script>
+	<script src="../../scripts/app/qqq.js"></script>
+	<script>
+		requirejs.config({
+			baseUrl : '../../scripts/lib'
+		});
+	</script>
+	<script type='text/javascript' src='../../scripts/news/news.js' charset='utf-8'></script>
+</html>

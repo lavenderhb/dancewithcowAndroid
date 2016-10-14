@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+		<meta name="format-detection" content="telephone=no" />
+		<title>title</title>
+		<link rel="stylesheet" type="text/css" href="../../styles/base/api.css"/>
+		<link rel="stylesheet" type="text/css" href="../../styles/base/sm.css"/>
+		<link rel="stylesheet" type="text/css" href="../../styles/news/news.css"/>
+		<style>
+		.instant-news .newsList a:visited {
+		  color: #1b1b1b!important;
+		}
+		.instant-news .newsList a:focus {
+		  color: #bbb!important;
+		}
+		</style>
+		<!--build:js scripts/common.js -->
+		<script  type="text/javascript"  src="../../scripts/lib/requirejs/require.js"></script>
+		<script type="text/javascript" src='../../scripts/common.js'></script>
+		<!-- endbuild -->
+		<script type="text/javascript" src='../../scripts/rev_rjs.js'></script>
+	</head>
+	<body>
+	    <div id="instant-news" class="instant-news">
+		   <!--<div class="content-block newsList">-->
+			  <!--<div class="timeStamp"><span>{{value.dates}}</span></div>-->
+			  <!--<ul>
+			  	<li class="wbox">
+			  	    <div class="timeLine">
+			  	     <div class="date-wrap"><div class="date">20</div><div class="month">10月</div></div>
+			  	     <span>17:12</span><i></i>
+			  	    </div>
+			  		<p class="wbox-flex rec-news" data-aid="{{item.aid}}" data-cid="{{item.cid}}" ><a href="#" class="alert-text external">习近平在贺电中表示，中菲两国是搬不走的邻居，睦邻友好是两国关系上千年的历史传承，也是必须坚持的正确方向。今天，中菲关系发展面临着重要机遇，我愿同总统先生共同努力，推动中菲关系走向改善，实现健康稳定发展。我相信，只要我们秉持诚意和善意，</a></p>
+			  	</li>
+			  	<li class="wbox">
+			  	    <div class="timeLine">
+			  	     <span>15:28</span><i></i>
+			  	    </div>
+			  		<p class="wbox-flex rec-news" data-aid="{{item.aid}}" data-cid="{{item.cid}}" ><a href="#" class="alert-text external">习近平在贺电中表示，中菲两国是搬不走的邻居，睦邻友好是两国关系上千年的历史传承，也是必须坚持的正确方向。今天，中菲关系发展面临着重要机遇，我愿同总统</a></p>
+			  	</li>
+			  	<li class="wbox">
+			  	    <div class="timeLine">
+			  	     <span>15:28</span><i></i>
+			  	    </div>
+			  		<p class="wbox-flex rec-news" data-aid="{{item.aid}}" data-cid="{{item.cid}}" ><a href="#" class="alert-text external">习近平在贺电中表示，中菲两国是搬不走的邻居，睦邻友好是两国关系上千年的历史传承，也是必须坚持的正确方向。今天，中菲关系发展面临着重要机遇，我愿同总统</a></p>
+			  	</li>
+			  </ul>
+			</div>
+			<div class="content-block newsList">-->
+			  <!--<div class="timeStamp"><span>{{value.dates}}</span></div>-->
+			 <!-- <ul>
+			  	<li class="wbox">
+			  	    <div class="timeLine">
+			  	     <div class="date-wrap"><div class="date">2</div><div class="month">9月</div></div>
+			  	     <span>17:12</span><i></i>
+			  	    </div>
+			  		<p class="wbox-flex rec-news" data-aid="{{item.aid}}" data-cid="{{item.cid}}" ><a href="#" class="alert-text external">习近平在贺电中表示，中菲两国是搬不走的邻居，睦邻友好是两国关系上千年的历史传承，也是必须坚持的正确方向。今天，中菲关系发展面临着重要机遇，我愿同总统先生共同努力，推动中菲关系走向改善，实现健康稳定发展。我相信，只要我们秉持诚意和善意，</a></p>
+			  	</li>
+			  	<li class="wbox">
+			  	    <div class="timeLine">
+			  	     <span>15:28</span><i></i>
+			  	    </div>
+			  		<p class="wbox-flex rec-news" data-aid="{{item.aid}}" data-cid="{{item.cid}}" ><a href="#" class="alert-text external">习近平在贺电中表示，中菲两国是搬不走的邻居，睦邻友好是两国关系上千年的历史传承，也是必须坚持的正确方向。今天，中菲关系发展面临着重要机遇，我愿同总统</a></p>
+			  	</li>
+			  	<li class="wbox">
+			  	    <div class="timeLine">
+			  	     <span>15:28</span><i></i>
+			  	    </div>
+			  		<p class="wbox-flex rec-news" data-aid="{{item.aid}}" data-cid="{{item.cid}}" ><a href="#" class="alert-text external">习近平在贺电中表示，中菲两国是搬不走的邻居，睦邻友好是两国关系上千年的历史传承，也是必须坚持的正确方向。今天，中菲关系发展面临着重要机遇，我愿同总统</a></p>
+			  	</li>
+			  </ul>
+			</div>-->
+	    </div>
+		<script id="tpl" type="text/html">
+			{{each data as value i}}
+			<div class="content-block newsList">
+			  <!--<div class="timeStamp"><span>{{value.dates}}</span></div>-->
+			  <ul>
+			    {{each value.sub as item j}}
+			    {{if j==0}}
+			  	<li class="wbox">
+			  	    <div class="timeLine">
+			  	     <div class="date-wrap"><div class="date">{{value.dates.substr(8,2)}}</div><div class="month">{{value.dates.substr(5,2)}}月</div></div>
+			  	     <span>{{item.times}}</span><i></i>
+			  	    </div>
+			  		<p class="wbox-flex rec-news" data-aid="{{item.aid}}" data-cid="{{item.cid}}" ><a href="javascript::" class="alert-text external">{{item.content}}</a></p>
+			  	</li>
+			  	{{else}}
+			  	<li class="wbox">
+			  	    <div class="timeLine">
+			  	     <span>{{item.times}}</span><i></i>
+			  	    </div>
+			  		<p class="wbox-flex rec-news" data-aid="{{item.aid}}" data-cid="{{item.cid}}" ><a href="javascript::" class="alert-text external">{{item.content}}</a></p>
+			  	</li>
+			  	{{/if}}
+			  	{{/each}}
+			  </ul>
+			</div>
+			{{/each}}
+		</script>
+	</body>
+	<script type='text/javascript' src='../../scripts/api.js' charset='utf-8'></script>
+	<script type='text/javascript' src='../../scripts/lib/zeptojs/zepto.min.js' charset='utf-8'></script>
+	<script type='text/javascript' src='../../scripts/app/TD_CONFIG.js' charset='utf-8'></script>
+	<script src="../../scripts/app/qqq.js"></script>
+	<script>
+		requirejs.config({
+			baseUrl : '../../scripts/lib'
+		});
+	</script>
+	<script type='text/javascript' src='../../scripts/news/new_kuaixun.js' charset='utf-8'></script>
+</html>

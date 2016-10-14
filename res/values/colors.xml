@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     Copyright (C) 2009 The Android Open Source Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+
+<resources>
+
+    <color name="textColorIconOverlay">#fff</color>
+    <color name="textColorIconOverlayShadow">#000</color>
+    <color name="quickcontact_disambig">#f2f2f2</color>
+    <color name="protection_lock_link">#ff0000ff</color>
+    <color name="edit_divider">#ff666666</color>
+    <color name="view_divider">#F0F0F0</color>
+
+    <!-- sms -->
+    <!-- Activity background color -->
+    <drawable name="class_zero_background">#7f040000</drawable>
+
+    <!-- Widget background -->
+    <drawable name="light_blue_background">#ffecfbff</drawable>
+    <drawable name="white_background">#ffffffff</drawable>
+
+    <!-- text color -->
+    <drawable name="text_color_red">#ffff0000</drawable>
+    <drawable name="text_color_black">#ff000000</drawable>
+    <drawable name="text_color_offwhite">#55ffffff</drawable>
+
+
+    <!-- Chat "sent time" text background -->
+    <color name="timestamp_color">#bf000000</color>
+
+    <!-- the background color used for unread conversation -->
+    <color name="unread_bgcolor">#ff404040</color>
+    <color name="TextColor">#FFFFFF</color>
+
+    <!-- Color used for the letter in the A-Z section header -->
+    <color name="section_header_text_color">#ff999999</color>
+
+    <!-- A light Holo shade of blue -->
+    <color name="holo_blue_light">#ff33b5e5</color>
+    <!-- A dark Holo shade of blue -->
+    <color name="holo_blue_dark">#ff0099cc</color>
+    <color name="dim_foreground_dark">#bebebe</color>
+    <color name="dim_foreground_dark_disabled">#80bebebe</color>
+    <color name="dim_foreground_dark_inverse">#323232</color>
+    <color name="dim_foreground_light">#323232</color>
+    <color name="dim_foreground_light_disabled">#80323232</color>
+    <color name="bright_foreground_light">@color/background_dark</color>
+    <color name="bright_foreground_light_disabled">#80000000</color>
+    <color name="background_dark">#ff000000</color>
+    <color name="no_color">#00000000</color>
+
+    <drawable name="white">#FFFFFFFF</drawable>
+    <drawable name="black">#000000</drawable>
+    <drawable name="blue">#0000FF</drawable>
+
+    <color name="gray">#A6A6A0</color>
+    <color name="red">#FF0000</color>
+    <color name="dark">#ff535353</color>
+    <color name="btn_shadow">#ffffffff</color>
+    <color name="grey">#ffadadad</color>
+    <color name="grey_disable">#ffd8e1e7</color>
+    <color name="white">#ffffffff</color>
+    <color name="btn_text_pressed">#ff945700</color>
+    <color name="btn_text_dialog">#ff0ca800</color>
+
+    <!-- add by libing for autostart -->
+    <item name="bg_color" type="color">@color/white</item>
+
+    <color name="color_green">#ff00ff00</color>
+    <color name="color_white">#ffffffff</color>
+    <color name="color_yellow">#ffffcc00</color>
+    <color name="color_yellow_dark">#ffe0a33a</color>
+    <color name="color_long_desc">#ff6a9a99</color>
+    <color name="color_white_dark">#ffaaaaaa</color>
+    <color name="black">#464646</color>
+    <color name="bg_more">#F0F4FB</color>
+    <color name="dialog_text">#ff646464</color>
+
+    <!-- flow rate used color -->
+    <color name="text_sky_blue">#ff37aae3</color>
+
+    <!-- view pager indicator used color -->
+    <color name="default_circle_indicator_page_color">#00000000</color>
+    <color name="default_circle_indicator_stroke_color">#FFDDDDDD</color>
+    <color name="default_btn_white_color">#FFFFFD</color>
+    <color name="transparent">#22ffffff</color>
+    <color name="gender_male">#ff65b1ea</color>
+    <color name="gender_famal">#ffffaed8</color>
+    
+    <color name="msg_status_sent">#ffeb7837</color>
+    <color name="msg_status_sending">#ff50a5c3</color>
+    <color name="msg_status_read">#ff82c85f</color>
+    <color name="msg_status_failed">#ffe64646</color>
+    <color name="msg_status_new">#fffff2cc</color>
+    <color name="msg_status_new_stroke">#ffff9b2f</color>
+    <color name="msg_status_new_text">#ffc0711b</color>
+    <color name="text_color">#ff434343</color>
+    <color name="download_progressbar_bg">#4c000000</color>
+    <color name="font_value">#ff888271</color>
+    <color name="timestampline">#ffe5e1de</color>
+    <color name="setback">#F4F3F3</color>
+    <color name="dark_yellow">#ffe8cb32</color>
+    
+    
+    <color name="black_half">#50000000</color>
+
+
+
+    <color name="red1">#BE0003</color>
+    <color name="red2">#96BE0003</color>
+    <color name="black1"  >#0B0914</color>
+    <color name="greed1">#FF1EFF0F</color>
+    <color name="greed2">#8b117c03</color>
+    <color name="bule1">#FF13141D</color>
+    <color name="gray1">#ff1a1920</color>
+    <color name="gray2">#605e64</color>
+
+    <color name="red0">#FFD83337</color>
+    <color name="blue0">#FF46FDFF</color>
+    <color name="grayAlf">#a0a6a6a0</color>
+    <color name="pupl">#a229af</color>
+    <color name="grayfortu">#585858</color>
+    <color name="grayforclose">#95a6a6a0</color>
+    <color name="light_gray">#fff5f5f5</color>
+    <color name="spinner_gray">#e7e7e7</color>
+    <color name="text_gray">#e7e7e7</color>
+    <color name="middle_dark_gray">#605e64</color>
+
+</resources>

@@ -1,0 +1,13 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+            android:id="@+id/down_num"
+            android:title="成交量"/>
+
+    <item
+            android:id="@+id/macd"
+            android:title="MACD"/>
+    <item
+            android:id="@+id/kdj"
+            android:title="KDJ"/>
+
+</menu>

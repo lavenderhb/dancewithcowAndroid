@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+		<title>title</title>
+		<link rel="stylesheet" type="text/css" href="../../styles/base/api.css"/>
+		<link rel="stylesheet" type="text/css" href="../../styles/base/sm.css"/>
+		<link rel="stylesheet" type="text/css" href="../../styles/news/news.css"/>
+		
+	</head>
+	<body>
+	    
+		<div id="common-list">
+			<div class="list-block media-list">
+				<ul id="newsList" class="commonNews gaoshouNews">
+					<!--<li>
+						<a href="#" class="item-link item-content external" data-aid="{{value.aid}}" data-cid="{{value.cid}}">
+							<div class="item-media"><img src="../../images/lazyImg.jpg" class="cache" data-echo="{{value.image}}" width="80">
+							</div>
+							<div class="item-inner">
+								<div class="item-title-row">
+									<div class="item-title">
+										习近平致电祝贺杜特尔特就任菲律宾总统
+									</div>
+								</div>
+								<div class="item-text">
+									习近平在贺电中表示，中菲两国是搬不走的邻居，睦邻友好是两国关系上千年的历史传承，也是必须坚持的正确方向。今天，中菲关系发展面临着重要机遇，我愿同总统先生共同努力，推动中菲关系走向改善，实现健康稳定发展。我相信，
+								</div>
+							</div> 
+						</a>
+					</li>
+					<li>
+						<a href="#" class="item-link item-content external" data-aid="{{value.aid}}" data-cid="{{value.cid}}">
+							<div class="item-media"><img src="../../images/lazyImg.jpg" class="cache" data-echo="{{value.image}}" width="80">
+							</div>
+							<div class="item-inner">
+								<div class="item-title-row">
+									<div class="item-title">
+										习近平致电祝贺杜特尔特就任菲律宾总统
+									</div>
+								</div>
+								<div class="item-text">
+									习近平在贺电中表示，中菲两国是搬不走的邻居，睦邻友好是两国关系上千年的历史传承，也是必须坚持的正确方向。今天，中菲关系发展面临着重要机遇，我愿同总统先生共同努力，推动中菲关系走向改善，实现健康稳定发展。我相信，
+								</div>
+							</div> 
+						</a>
+					</li>-->
+				</ul>
+			</div>
+		</div>
+		<script id="tpl" type="text/html">
+			{{each data as value i}}
+			<li>
+				<a href="javascript:;" class="item-link item-content external" data-aid="{{value.aid}}" data-cid="{{value.cid}}">
+					<div class="item-media"><img src="../../images/lazyImg.jpg" class="cache" data-echo="{{value.image}}">
+					</div>
+					<div class="item-inner">
+						<div class="item-title-row">
+							<div class="item-title">
+								{{value.title}}
+							</div>
+						</div>
+						<div class="item-text">
+							{{value.content}}
+						</div>
+					</div> 
+				</a>
+			</li>
+			{{/each}}
+		</script>
+	</body>
+	<script type='text/javascript' src='../../scripts/api.js' charset='utf-8'></script>
+	<script type='text/javascript' src='../../scripts/lib/zeptojs/zepto.min.js' charset='utf-8'></script>
+	<script type='text/javascript' src='../../scripts/app/TD_CONFIG.js' charset='utf-8'></script>
+	<script src="../../scripts/app/qqq.js"></script>
+	<script type='text/javascript' src='../../scripts/lib/template.js' charset='utf-8'></script>
+	<script type='text/javascript' src='../../scripts/echo.js' charset='utf-8'></script>
+	<script type='text/javascript' src='../../scripts/gaoshou/gaoshou.js' charset='utf-8'></script>
+	
+</html>

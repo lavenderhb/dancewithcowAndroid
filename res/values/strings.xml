@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">与牛共舞</string>
+    <string name="sliding_menu_pager_name">股票行情</string>
+    <string name="search_page_name">搜索</string>
+    <string name="setting_main">开发者模式</string>
+
+    <string name="back">返回</string>
+    <string name="confirm">确定</string>
+    <string name="cancel">取消</string>
+    <string name="prompt">提示</string>
+    <string name="complete">完成</string>
+    <string name="exit">退出</string>
+    <string name="browser_exitdialog_app_text">确定要退出程序吗？</string>
+    <string name="browser_exitdialog_msg">退出提示</string>
+    <string name="browser_dialog_error">错误提示</string>
+    <string name="browser_init_error">程序不完整</string>
+    
+
+</resources>

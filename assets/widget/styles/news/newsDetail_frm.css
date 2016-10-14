@@ -1,0 +1,113 @@
+/* news 内容区 start*/
+html, body {
+    min-height: 100%;
+    overflow-y:auto;
+    font-family: "Microsoft YaHei",Arial,Helvetica,sans-serif,"宋体";
+}   
+
+body{position:static;}
+.page{position:static;min-height: 100%;overflow-y: auto;height:auto;}
+.text{background:#fff;  color: #303030;
+  font-size: .75rem;
+  padding: .75rem .5rem;    font-family: arial!important;}
+.text p{;margin:0;}
+.text img{width:100%!important;height:auto!important;}
+.list-block .item-title{  max-height: 2.4rem;
+  overflow: hidden;
+  line-height: 1.2rem;  white-space: normal;   padding: 0 .5rem;}
+.list-block{margin:0;  padding: .75rem 0 0;}
+.list-block .item-subtitle{padding: 0 .5rem .5rem;
+  color: #bbb;
+  font-size: .6rem;}
+.item-subtitle .newsSrc{margin-right:.2rem;}
+.item-title h2{  color: #000;
+  font-size: .9rem;
+  margin: 0;  font-weight: normal;}
+  .content-inner{padding-bottom:0;}
+  .s-pad{
+  padding:.75rem 0;
+  }
+/* news 内容区 end*/
+
+/* newsdetail 20160701 style start*/
+.page{ background: #f1f1f1; }
+.list-block .item-subtitle {
+  margin-top: .8rem;
+  padding: 0 .5rem .6rem;
+    color: #454545;
+}
+.text{padding-top:0;}
+.summary-wrap{
+  background-color: #f1f1f1;
+    padding: 1.6rem .5rem 1rem;
+    position:relative;
+       margin-bottom: .75rem;
+}
+.summary-icon{position:absolute;top: 0;left:0;background-color: #fca07c;color:#fff;  padding: 0 .15rem;font-family: "Microsoft YaHei",Arial,Helvetica,sans-serif,"宋体";}
+.summary-wrap .summary{  color: #565656;font-family: "Microsoft YaHei",Arial,Helvetica,sans-serif,"宋体";}
+.news-content{ color: #454545;font-family: "Microsoft YaHei",Arial,Helvetica,sans-serif,"宋体";}
+.editor{  width: 100%;
+  text-align: right;
+  margin-top: 1rem;color:#4d4d4d;  font-size: .6rem;
+}
+.newsDetail-wrap{background: #fff;  width: 100%;
+  overflow-x: hidden;}
+/* newsdetail 20160701 style start*/
+/*相关新闻 style start*/
+.card-content-inner{padding:.5rem;line-height: 2.5rem;color:#323232;}
+.card-content-inner a{color:#323232;}
+
+.card-content-inner li{position:relative;}
+.card-content-inner li:after {
+  position: absolute;
+  top: auto;
+  right: auto;
+  bottom: 0;
+  left: 0;
+  z-index: 15;
+  display: block;
+  width: 100%;
+  height: 1px;
+  content: '';
+  background-color: #e1e1e1;
+  -webkit-transform-origin: 50% 100%;
+  -ms-transform-origin: 50% 100%;
+  transform-origin: 50% 100%;
+}
+.wealthHots { margin: 0;margin-top:.5rem;}
+.wealthHots .more{position:absolute;right:.5rem;  color: #5c5c5c;
+  font-size: .6rem;  top: .7rem;}
+.wealthHots .card-content-inner{padding:0 .5rem;}
+.mar{margin:.6rem 1.25rem;}
+.gupiao{background:url(../images/main/news/gupiao-bg.png);background-size:16.25rem 3.5rem;}
+.dianxun{background:url(../images/main/news/dianxun-bg.png);background-size:16.25rem 3.5rem;}
+.zhanji{background:url(../images/main/news/zhanji-bg.png);background-size:16.25rem 3.5rem;}
+.card {display:block;}
+.arrow-wrap{position:relative;color:#fff;font-size:.9rem;height: 2.5rem;}
+.arrow-wrap:after{
+  position: absolute;
+  top: auto;
+  right: 0;
+  bottom: .5rem;
+  z-index: 15;
+  display: block;
+  content: '';
+  background: url(../images/main/news/jiantou.png);
+  background-size: 1.5rem 1.5rem;
+  width: 1.5rem;
+  height: 1.5rem;
+ }
+ .wealthHots .card-header{  font-size: .7rem;border-radius:0;color:#171717;  }
+ .wealthHots .card-header span{ border-left: 4px solid #ff7b0b;  padding-left: .2rem;  font-size: .75rem;  width: 100%;}
+ .wealthHots .card-content-inner li{color:#303030;font-size:.7rem;  line-height: 2.1rem;}
+  .wealthHots .card-content-inner li a{
+  	display: block;
+  padding-right: 1rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+     color: #373737;
+  }
+.wealthHots .card-header:after{height:2px;}
+/*相关新闻 style e*/

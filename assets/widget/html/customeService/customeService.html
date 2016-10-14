@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+		<title>title</title>
+		<link rel="stylesheet" type="text/css" href="../../styles/base/api.css"/>
+		<link rel="stylesheet" type="text/css" href="../../styles/base/sm.css"/>
+		<link rel="stylesheet" type="text/css" href="../../styles/mods/nav-iscroll.css"/>
+		<link rel="stylesheet" type="text/css" href="../../styles/customeService/customeService.css"/>
+		<!--build:js scripts/common.js -->
+		<script type="text/javascript"  src="../../scripts/lib/requirejs/require.js"></script>
+		<script type="text/javascript" src='../../scripts/common.js'></script>
+		<!-- endbuild -->
+		<script type="text/javascript" src='../../scripts/rev_rjs.js'></script>
+	</head>
+	<body>
+		
+		<div id="nav" class="img-iscroll">
+		   
+		</div>
+		<div class="list-block media-list customList" id="customList">
+			
+		</div>
+		<script id="tpl-customList" type="text/html">
+		    {{each data as value i}}
+			<div class="card">
+				<div class="card-content">
+					<div class="list-block media-list">
+						<a class="custom-link" id="{{value.id}}">
+						<div class="wbox item-info-wrap">
+							<div class="item-media">
+								<img src="../../images/lazyImg.jpg" data-echo="{{value.photo}}" class="cache" />
+							</div>
+							<div class="wbox-flex item-info">
+								<div class="wbox line">
+									<div class="item-title">
+										{{value.name}}
+									</div>
+								</div>
+								<p class="major-desc">
+									{{value.team}}
+								</p>
+								<div class="item-subtitle">
+									<span class="">从业时间:</span><span>{{value.worktime}}</span>
+								</div>
+							</div>
+						</div> </a>
+					</div>
+				</div>
+			</div>
+			{{/each}}
+		</script>
+		<script id="tpl-nav" type="text/html">
+		    <h3 id="title"></h3>
+			<div id="wrapper" class="iscroll-wrapper">
+				<div id="scroller" class="iscroll-scroller">
+					<ul>
+					    {{each data as value i}}
+						<li data-index="{{i}}" id="{{value.id }}"  tapmode=""  class="custom-link"><a class="img-wrap"><img src="../../images/lazyImg.jpg" class="cache"  data-echo="{{value.image}}"  /></a><a class="cus-name">{{value.name}}</a></li>
+			            {{/each}}
+					</ul>
+				</div>
+			</div>
+		</script>
+	</body>
+	<script type='text/javascript' src='../../scripts/api.js' charset='utf-8'></script>
+	<script type='text/javascript' src='../../scripts/lib/zeptojs/zepto.min.js' charset='utf-8'></script>
+	<script type='text/javascript' src='../../scripts/iscroll.js' charset='utf-8'></script>
+	<script type='text/javascript' src='../../scripts/app/TD_CONFIG.js' charset='utf-8'></script>
+	<script src="../../scripts/app/qqq.js"></script>
+	<script>
+		requirejs.config({
+			baseUrl : '../../scripts/lib'
+		});
+	</script>
+	<script type='text/javascript' src='../../scripts/customeService/customeService.js' charset='utf-8'></script>
+</html>

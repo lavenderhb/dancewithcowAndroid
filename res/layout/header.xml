@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:orientation="vertical" >
+
+        <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/hangqing_bg"
+                android:layout_alignParentTop="true" >
+
+                <!--<include-->
+                        <!--android:layout_width="fill_parent"-->
+                        <!--android:layout_height="1dp"-->
+                        <!--android:layout_alignParentBottom="true"-->
+                        <!--layout="@layout/line" >-->
+                <!--</include>-->
+
+                <Button
+                        android:id="@+id/btnBack"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_centerVertical="true"
+                        android:background="@drawable/button_selector_back" />
+
+
+                <TextView
+                        android:id="@+id/tvTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:text=""
+                        android:textColor="@color/white"
+                        android:textSize="20sp" />
+
+                <Button
+                        android:id="@+id/btnAdd"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:background="@drawable/button_selector_add"
+                        android:visibility="gone"
+                        />
+
+                <Button
+                        android:id="@+id/btnSub"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:background="@drawable/button_select_sub"
+                        android:visibility="gone"
+                        />
+                <Button
+                        android:id="@+id/btnRefresh"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:background="@drawable/button_selector_refresh"
+                        android:visibility="gone"
+                        />
+
+        </RelativeLayout>
+</RelativeLayout>

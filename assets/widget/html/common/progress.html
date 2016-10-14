@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <title>title</title>
+    <link rel="stylesheet" href="../../styles/base/api.css">
+    <link rel="stylesheet" href="../../styles/base/sm.css">
+    <link rel="stylesheet" type="text/css" href="../../styles/mods/progress.css"/>
+    <style>
+    .td .progress-striped .progress-bar{    background-color: #ee4a49;}
+    .td .progress-striped .progress-bar{background-image:none;}
+    .td .progress .progress-bar{background-image:none;}
+    .td .progress.active .progress-bar{
+     -webkit-animation: none;
+     -moz-animation: none;
+      -ms-animation: none;
+       -o-animation: none;
+          animation: none;
+    
+    }
+    </style>
+</head>
+<body>
+    <div class="floatBox  td" id="floatBox" >
+        <div class="floatBox-inner">
+            <div class="floatBox-title">下载安装包</div>
+            <div class="floatBox-content">
+                <span id="percent">0%</span> / <span id="fileSize"></span>
+            </div>
+            <div class="progress progress-striped active">
+              <div class="progress-bar" style="width: 0%" id="progress-bar"></div>
+            </div>
+        </div>
+    </div>
+    <div class="floatBox-overlay " id="floatBox-overlay"></div>
+</body>
+<script type='text/javascript' src='../../scripts/api.js' charset='utf-8'></script>
+<script type='text/javascript' src='../../scripts/lib/zeptojs/zepto.min.js' charset='utf-8'></script>
+<script type='text/javascript' src='../../scripts/app/TD_CONFIG.js' charset='utf-8'></script>
+<script type="text/javascript">
+    var isFirst=true;
+    var $fileSize="";
+    var $progress="";
+    var progressNum=0;
+    var $percent="";
+    var sizeM=0;
+    var dlSize=0;
+	apiready = function(){
+	    
+		$(function(){
+		  var $floatBox=$("#floatBox");
+          var $overlay=$("#floatBox-overlay");
+          $progress=$("#progress-bar");
+          $fileSize=$("#fileSize");
+          $percent=$("#percent");
+		  setTimeout(function(){
+		      $floatBox.addClass("floatBox-in");
+              $overlay.addClass("floatBox-overlay-visible");
+		      $floatBox.css({
+                marginTop: - Math.round($floatBox.height() / 2) + 'px'
+               });
+		  },300);
+		  
+		  if(api.systemType=='ios'){
+		  	  //savePath='fs://app.ipa';
+//		  	  url='https://list.kuaiapp.cn/list/KuaiAppZv7.1.plist'; //安装包对应plist地址;
+//		  	  installApp(url);
+		  }
+		  else{
+		  	  downloadAndInstallApp(installUrl,appSavePath);
+		  }
+		  
+		});
+	};
+	function downloadAndInstallApp(url,savePath){
+          api.download({
+            url: url,
+            savePath: savePath,
+            report: true,
+            cache: true,
+            allowResume: true
+        },function( ret, err ){
+            if(ret){
+                if(isFirst){
+                    isFirst=false;
+                    sizeM=(parseFloat(ret.fileSize)/1024)/1024;
+                    sizeM=sizeM.toFixed(2);
+                    $fileSize.html(sizeM+"M");
+                }
+                //progressNum=parseInt(ret.percent*100)+"%";
+                try{
+                    progressNum=ret.percent.toFixed(2)+"%";
+                    dlSize=((ret.percent*sizeM)/100).toFixed(2)+"M";
+                }catch(err){
+                    toast("网络异常，请稍后重试");
+                    api.closeFrame();
+                    return;
+                }
+                
+                $percent.html(dlSize);
+                $progress.width(progressNum);
+                
+                if(ret.state==1&&ret.progress==100){
+                   installApp(savePath);
+                   api.execScript({
+                       frameName:"my",
+	                   script: 'checkVersion();'
+                   });
+                   api.closeFrame();
+                }
+            }else{
+                alert( JSON.stringify ( err ) );
+            }
+        });
+    }
+    function installApp(savePath){
+        if(api.systemType=="ios"){
+            //iOS用法：
+//          api.installApp({
+//              appUri: 'https://itunes.apple.com/cn/app/qq/id444934666?mt=8'    //itunes地址
+//          });
+            
+//          api.installApp({
+//              appUri: savePath
+//          });
+        }
+        else{
+            //Android用法：
+            api.installApp({
+                appUri: savePath
+            });
+        }
+    }
+    function toast(msg) { 
+        api.toast({
+            msg: msg,
+            duration:1000,
+            location: 'middle'
+        });
+    }
+</script>
+</html>

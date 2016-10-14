@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+		<title>title</title>
+		<link rel="stylesheet" href="../../styles/base/api.css">
+	    <link rel="stylesheet" href="../../styles/base/sm.css">
+	    <link rel="stylesheet" href="../../styles/common/alert.css">
+	</head>
+	<body>
+		<div class="page"></div>
+	</body>
+	<script type='text/javascript' src='../../scripts/api.js' charset='utf-8'></script>
+	<script type='text/javascript' src='../../scripts/lib/zeptojs/zepto.min.js' charset='utf-8'></script>
+	<script type='text/javascript' src='../../scripts/sm.js' charset='utf-8'></script>
+	<script type='text/javascript' src='../../scripts/app/TD_CONFIG.js' charset='utf-8'></script>
+	<script type="text/javascript">
+		apiready = function() {
+			$(function() {
+				var type = api.pageParam.type;
+				if (api.pageParam.modalButtonOk) {
+					$.modal.prototype.defaults.modalButtonOk = api.pageParam.modalButtonOk;
+				}
+				$.confirm(api.pageParam.text, api.pageParam.title, function() {
+					if (type == "my") {
+					    if(api.systemType=='ios'){
+					       // alert("iosInstallUrl:"+iosInstallUrl);
+					    	api.installApp({
+				                appUri: iosInstallUrl
+				            });
+					    }
+					    else{
+					    	openFrame("progress");
+					    }
+					    api.closeFrame();
+					}
+					else if(type == "index"){
+					    if(api.systemType=='ios'){
+					        //alert("iosInstallUrl:"+iosInstallUrl);
+					    	api.installApp({
+				                appUri: iosInstallUrl
+				            });
+					    }
+					    else{
+					    	openFrame("progress");
+					    }
+                        api.closeFrame();
+					}else if (type == "logout") {
+					    var username=$api.getStorage("username");
+					    $api.setStorage("username","");
+					    $api.setStorage("uid","");
+					    $api.setStorage("csid","");
+						api.openWin({
+							name : 'login',
+							url : 'login.html',
+							bounces : false,
+							animation : 'push',
+							scrollToTop : true,
+							rect : {
+								x : 0,
+								y : 0,
+								w : 'auto',
+								h : 'auto'
+							},
+							pageParam:{username:username,toPage:"main"}
+						});
+						
+						api.closeFrame();
+					}
+					else if(type=="clearCache"){
+						clearCache();
+					}
+					
+				}, function() {
+//				    if(type == "index"||type == "version"){
+//				        window.isUserCancel=true;
+//				    }
+					api.closeFrame();
+				});
+			});
+			function clearCache() {
+		       // $api.addCls($api.byId('floatbody'), 'hidden');
+		       // $api.css($api.byId('clear'),'display:block');
+		        $.showPreloader('正在清除缓存...')
+		        var cacheDir = api.cacheDir;
+		      //  alert("cacheDir:"+cacheDir);
+		        api.clearCache(
+				    function(ret,err){
+				      // $api.css($api.byId('clear'),'hidden');
+				       setTimeout(function(){
+				       		$.hidePreloader();
+					        api.toast({
+					            msg:'清除成功',
+					            location:'middle'
+					        });
+					        api.execScript({
+					            frameName:'my',
+				                script: 'resetCacheSize();'
+			                });
+			                api.closeFrame();
+				       
+				       },5000);
+				        
+				    }
+				);
+		        
+		    }
+		    
+		    function openFrame(type){
+		      api.openFrame({
+                    name: type,
+                    url: type+'.html',
+                    rect:{
+                        x:0,
+                        y:0,
+                        w:'auto',
+                        h:'auto'
+                    },
+                    //pageParam:{text:tipInfo,type:type,modalButtonOk:modalButtonOk,title:title},
+                    bounces: false
+                });
+		    }
+		};
+	</script>
+</html>

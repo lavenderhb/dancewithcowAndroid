@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<widget id="A6905472776155" version="0.0.1"> 
+  <name>与牛共舞</name>  
+  <description>与牛共舞</description>  
+  <author email="2095999052@qq.com" href="http://sino-web.cn">2095999052@qq.com</author>  
+  <content src="index.html"/>  
+  <preference name="appBackground" value="rgba(0,0,0,0)"/>  
+  <preference name="windowBackground" value="#efeff4"/>  
+  <preference name="frameBackgroundColor" value="rgba(0,0,0,0)"/>  
+  <preference name="autoLaunch" value="true"/>  
+  <preference name="autoUpdate" value="true"/>  
+  <preference name="smartUpdate" value="true"/>  
+  <preference name="debug" value="false"/>  
+  <preference name="iOS7StatusBarAppearance" value="true"/>  
+  <permission name="location"/>  
+  <permission name="internet"/>  
+  <access origin="*"/>  
+  <feature name="ajpush">
+    <param name="app_key" value="2e1e40eab875c45e4bf1ff2d"/>
+    <param name="channel" value="your channel"/>
+  </feature>
+  <feature name="TalkingData"> 
+    <param name="logEnable" value="false"/>  
+    <param name="exceptionReportEnabled" value="true"/>  
+    <param name="channel" value="AppStore"/> 
+  </feature> 
+</widget>

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no" />
+    <title>title</title>
+	<link rel="stylesheet" type="text/css" href="../../styles/base/api.css"/>
+	<link rel="stylesheet" type="text/css" href="../../styles/base/sm.css"/>
+	<link rel="stylesheet" type="text/css" href="../../styles/mods/sewisePlayer.css"/>
+	<link rel="stylesheet" type="text/css" href="../../styles/news/newsDetail_frm.css"/>
+	<style>
+		div.sewise-player-ui div.controlbar ul.controlbar-btns div.controlbar-volumeline {display:none;}
+		div.sewise-player-ui div.controlbar ul.controlbar-btns li .controlbar-btns-soundopen{display:none!important;}
+	</style>
+	<script type='text/javascript' src='player/js/jquery.min.js' charset='utf-8'></script>
+	
+	<script type='text/javascript' src='../../scripts/lib/zeptojs/zepto.min.js' charset='utf-8'></script>
+	<!--build:js scripts/common.js -->
+	<script   src="../../scripts/lib/requirejs/require.js"></script>
+	<script type="text/javascript" src='../../scripts/common.js'></script>
+	<!-- endbuild -->
+	<script type="text/javascript" src='../../scripts/rev_rjs.js'></script>
+	<script type="text/javascript" src="player/sewise.player.min.js"></script>
+</head>
+<body>
+	<div class="page">
+	    <div class="content-inner">
+			<div class="">
+				<div class="list-block newsDetail-wrap" id="newsDetail">
+					<!--<div class="item-title">
+						<h2>习近平致电祝贺杜特尔特就任菲律宾总统</h2>
+					</div>
+					<div class="item-subtitle">
+						<span class="newsSrc">新华社</span><span>2016年06月30日 17:52:46</span>
+					</div>
+					<div class="text" id="textWrap">
+						<div class="summary-wrap">
+							<div class="summary">习近平在贺电中表示，中菲两国是搬不走的邻居，睦邻友好是两国关系上千年的历史传承，也是必须坚持的正确方向。今天，中菲关系发展面临着重要机遇，我愿同总统先生共</div>
+							<div class="summary-icon">摘要</div>
+						</div>
+						<div class="news-content">
+						习近平在贺电中表示，中菲两国是搬不走的邻居，睦邻友好是两国关系上千年的历史传承，也是必须坚持的正确方向。今天，中菲关系发展面临着重要机遇，我愿同总统先生共同努力，推动中菲关系走向改善，实现健康稳定发展。我相信，只要我们秉持诚意和善意，坚持互信和合作，就一定能够开创中菲关系和中菲合作的美好未来。
+						</div>
+						<div class="editor">[责任编辑：张后浪]</div>
+					</div>-->
+				</div>
+				<div class="card wealthHots" id="wealthHots">
+				   <!-- <div class="card-header" id="wealthHotsDesc"><span>相关阅读 </span></div>
+				    <div class="card-content">
+				      <div class="card-content-inner">
+				        <ul id="newsList">
+				         	<li data-aid="{{value.aid}}" data-cid="{{value.cid}}"><a class="external">【0421题材挖掘机】盘前精选8只涨停潜力股 </a></li>
+			            	<li data-aid="{{value.aid}}" data-cid="{{value.cid}}"><a class="external">【0420掘金龙虎榜】龙虎榜巨资抢筹封死涨停</a></li>
+			           		<li data-aid="{{value.aid}}" data-cid="{{value.cid}}"><a class="external">【0420涨停马力】糖业股逆市大涨</a></li>
+			            </ul>
+		              </div>
+				    </div>-->
+			   </div>
+			</div>
+		</div>
+	</div>
+	<script id="tpl" type="text/html">
+		<div class="item-title">
+			<h2>{{title}}</h2>
+		</div>
+		<div class="item-subtitle">
+			<span class="newsSrc">{{source}}</span><span>{{dates}}</span>
+		</div>
+		<div class="text" id="textWrap">
+		    {{if content&&content!=""}}
+			<div class="summary-wrap">
+				<div class="summary">{{content}}</div>
+				<div class="summary-icon">摘要</div>
+			</div>
+			{{/if}}
+			{{if video&&video!=""&&wtype=="app"}}
+			<div style="position: relative; height: 10rem;"  id="videoWrap">
+			    <div style="position: absolute;right:0;bottom: 0;width:60px;height:56px;z-index: 1000;background: transparent;" id="fakeFullBtn"></div>
+			</div>
+			{{/if}}
+			
+			{{if wtype!="web"}}
+			<div class="news-content">
+			{{bodys}}
+			</div>
+			{{/if}}
+			
+			{{if edit&&edit!=""}}
+			<div class="editor">[责任编辑：{{edit}}]</div>
+			{{/if}}
+		</div>
+	</script>
+	<script id="tpl-related" type="text/html">
+	    <div class="card-header" id="wealthHotsDesc"><span>相关阅读 </span></div>
+	    <div class="card-content">
+	      <div class="card-content-inner">
+	        <ul id="newsList">
+	            {{each data as value i}}
+	         	<li data-aid="{{value.aid}}" data-cid="{{value.cid}}"><a class="external">{{value.title}} </a></li>
+           		{{/each}}
+            </ul>
+          </div>
+	    </div>
+	</script>
+    <script>
+	$.config = {router: false};
+	</script>
+    <script type='text/javascript' src='../../scripts/api.js' charset='utf-8'></script>
+	<script type='text/javascript' src='../../scripts/sm.js' charset='utf-8'></script>
+	<!--<script type='text/javascript' src='../../scripts/mods/video.js' charset='utf-8'></script>-->
+	<script type='text/javascript' src='../../scripts/app/TD_CONFIG.js' charset='utf-8'></script>
+
+	<script>
+	requirejs.config({
+		baseUrl : '../../scripts/lib'});
+	</script>
+	<script type='text/javascript' src='../../scripts/news/newsDetail_frm.js' charset='utf-8'></script>
+</body>
+</html>

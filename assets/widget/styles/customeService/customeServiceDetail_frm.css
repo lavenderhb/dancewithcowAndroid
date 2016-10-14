@@ -1,0 +1,67 @@
+
+.list-block{margin:0;}
+html, body {
+    min-height: 100%;
+    overflow-y:auto;
+}
+body{position:relative;}
+
+ .wbox {
+  display: -webkit-flex!important;
+  display: -webkit-box;
+  overflow: hidden;
+}
+ .wbox-flex {
+  -webkit-flex: 1!important;
+  -webkit-box-flex: 1;
+  word-wrap: break-word;
+  word-break: break-all;
+}
+
+.customList .label{font-size:.75rem;position:relative;  background-color: #ee4a49;
+  color: #fff;text-align: center;  padding: 0.2rem .6rem;}
+.list-block .item-link .item-inner{padding-right:.75rem;}
+.list-block ul ul{padding-left:0;}
+.customList .list-block.media-list .item-media {
+  padding: 0;
+  width: 4.3rem;
+  height: 4.3rem;
+  border-radius: 4.3rem;
+  border: .15rem solid #f27777;
+}
+.customList .item-info{padding-left: .4rem;  vertical-align: middle;}
+.customList .item-info2{font-size: .75rem;margin-top: .5rem;background-color: #fff;  padding:.7rem;margin-bottom: .7rem;}
+.customList .item-info2 .item-info2-major{-webkit-flex-shrink: 1;
+  -ms-flex: 0 1 auto;
+  -webkit-flex-shrink: 1;
+  flex-shrink: 1;
+  white-space: nowrap;
+  position: relative;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;}
+.customList .list-block{padding:.7rem .4rem 0;}
+.customList .item-media img{ width: 4rem;border-radius: 50%;height:4rem;  margin: 0 auto;}
+.customList a{display:block;}
+.customList .item-info2 p{    margin: 0 0 .7rem;  font-size: .75rem;
+  color: #666;text-indent: 2em;}
+  .mb-m{margin-bottom:1rem;}
+.card{background:0;  box-shadow: none;}
+.item-info-wrap{background-color: #fff;padding: .5rem .4rem 0.2rem;}
+.list-block .item-title{width:auto;}
+.list-block.media-list .item-title{width:auto;  font-weight: normal;font-size:.9rem;color:#ee4a49;}
+.list-block .item-subtitle{width:auto;color:#242424;font-size:.6rem;  top: .1rem;  margin-left: .3rem;float: right;}
+.pr{position:relative;}
+.line{ 
+  border-bottom: 1px solid #dfdfdf;  line-height: 1.8;}
+  .customList .item-info2  .line{position:absolute; top:50%;  width: 100%;}
+.card{  margin: 0;}
+.major-desc{ font-size: 0.7rem;
+  color: #2b2b2b;
+     height: 1.96rem;
+  line-height: 1.4;
+  	margin:0;
+    margin-top: .2rem;
+  	  padding: 0 0.5em 0 0;
+  	  overflow: hidden;
+  text-overflow: ellipsis;}

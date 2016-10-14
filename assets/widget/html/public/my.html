@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+		<title>title</title>
+		<link rel="stylesheet" type="text/css" href="../../styles/base/api.css"/>
+		<link rel="stylesheet" type="text/css" href="../../styles/base/sm.css"/>
+		<link rel="stylesheet" href="../../styles/my.css">
+		<!--build:js scripts/common.js -->
+		<script   src="../../scripts/lib/requirejs/require.js"></script>
+		<script type="text/javascript" src='../../scripts/common.js'></script>
+		<!-- endbuild -->
+		<script type="text/javascript" src='../../scripts/rev_rjs.js'></script>
+	</head>
+	<body>
+		<div class="page">
+			<div class="content">
+				<!--<div class="list-block media-list userinfo" >
+				<div class="wbox">
+				<div class="item-media">
+				<img src="../../images/my/avatar.jpg" width="80">
+				</div>
+				<div class="wbox-flex item-info">
+				<div class="item-title-row">
+				<div class="item-title">
+				1861*****41
+				</div>
+				</div>
+				<div class="item-subtitle"></div>
+				</div>
+				</div>
+				</div>-->
+				<div class="list-block myList" id="myList">
+					<ul>
+						<li class="item-content item-link"  data-src="msg">
+							<div class="item-inner">
+								<div class="item-title">
+									我的消息
+								</div>
+								<div class="item-after">
+									<span class="msg-tip" id="msg-tip"></span>
+								</div>
+							</div>
+						</li>
+						<li class="item-content item-link"  data-src="userInfo">
+							<div class="item-inner">
+								<div class="item-title">
+									个人资料
+								</div>
+								<div class="item-after">
+									修改/完善
+								</div>
+							</div>
+						</li>
+						<li class="item-content item-link" data-src="clearCache">
+							<!--<div class="item-media"><i class="icon icon-f7"></i></div>-->
+							<div class="item-inner">
+								<div class="item-title">
+									手动清理缓存 
+								</div>
+								<div class="item-after" id="cacheSize">
+								</div>
+							</div>
+						</li>
+						<!--<li class="item-content item-link"  data-src="version">
+							<div class="item-inner">
+								<div class="item-title">
+									版本更新
+								</div>
+								<div class="item-after ver-wrap">
+									<span id="verNum"></span>
+									<span class="dot" id="dot"></span>
+								</div>
+							</div>
+						</li>-->
+						
+					</ul>
+				</div>
+				<div class="btn-wrap">
+				        <a href="#" class="button button-fill button-danger btn-hide" id="btn" >安全退出</a>
+						<a href="#" class="button button-fill button-danger btn-hide" id="btn-login" >登录/注册</a>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script type='text/javascript' src='../../scripts/api.js' charset='utf-8'></script>
+	<script type='text/javascript' src='../../scripts/lib/zeptojs/zepto.min.js' charset='utf-8'></script>
+	<script type='text/javascript' src='../../scripts/sm.js' charset='utf-8'></script>
+	<script type='text/javascript' src='../../scripts/app/TD_CONFIG.js' charset='utf-8'></script>
+	<script type='text/javascript' src='../../scripts/app/qqq.js' charset='utf-8'></script>
+	<script type="text/javascript" src="../../scripts/mods/version.js"></script>
+	<script>
+		requirejs.config({
+			baseUrl : '../../scripts/lib'
+		});
+	</script>
+	<script type='text/javascript' src='../../scripts/app/my.js' charset='utf-8'></script>
+</html>

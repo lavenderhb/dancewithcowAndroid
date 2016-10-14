@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+		<meta name="format-detection" content="telephone=no" />
+		<title>title</title>
+		<link rel="stylesheet" type="text/css" href="../../styles/base/api.css"/>
+		<link rel="stylesheet" type="text/css" href="../../styles/base/sm.css"/>
+		<link rel="stylesheet" type="text/css" href="../../styles/main.css"/>
+		<style>
+		.wealthHots .card-content-inner li:before{background: none;}
+		.wealthHots{margin-top:0;}
+		.wealthHots .card-content-inner li span{padding-right:0;display: block;
+		  white-space: nowrap;
+		  overflow: hidden;
+		  text-overflow: ellipsis;
+		  max-width: 100%;
+		  color: #5c5c5c;}
+		</style>
+		<!--build:js scripts/common.js -->
+		<script  type="text/javascript"  src="../../scripts/lib/requirejs/require.js"></script>
+		<script type="text/javascript" src='../../scripts/common.js'></script>
+		<!-- endbuild -->
+		<script type="text/javascript" src='../../scripts/rev_rjs.js'></script>
+	</head>
+	<body>
+		<div class="page" >
+			  <div class="card wealthHots" id="wealthHots">
+			      <div class="card-content-inner">
+			        <ul id="videolist">
+			         	<!--<li data-aid="{{value.aid}}" data-cid="{{value.cid}}"><span>【0421题材挖掘机】盘前精选8只涨停潜力股 </span></li>
+		            	<li data-aid="{{value.aid}}" data-cid="{{value.cid}}"><span>20170125逆市大涨</span></li>
+		           		<li data-aid="{{value.aid}}" data-cid="{{value.cid}}"><span>20170125逆市大涨</span></li>-->
+		            </ul>
+	              </div>
+			    </div>
+			  </div>
+		</div>
+		<script id="tpl" type="text/html">
+			{{each data as value i}}
+			<li data-aid="{{value.aid}}" data-cid="{{value.cid}}"><span>{{value.title}}</span></li>
+			{{/each}}
+		</script>
+		<script type='text/javascript' src='../../scripts/api.js' charset='utf-8'></script>
+		<script type='text/javascript' src='../../scripts/lib/zeptojs/zepto.min.js' charset='utf-8'></script>
+		<script type='text/javascript' src='../../scripts/sm.js' charset='utf-8'></script>
+		<script type='text/javascript' src='../../scripts/app/TD_CONFIG.js' charset='utf-8'></script>
+		<script src="../../scripts/app/qqq.js"></script>
+		<script>
+			requirejs.config({
+				baseUrl : '../../scripts/lib'
+			});
+		</script>
+		<script type='text/javascript' src='../../scripts/video/videolist.js' charset='utf-8'></script>
+	</body>
+</html>

@@ -1,0 +1,83 @@
+
+.list-block{margin:0;margin-top:1.6rem;}
+.content-block{padding:0;  margin: .8rem 0 1.8rem;}
+.register-wrap .content-block{padding:0;   margin: 1.75rem .6rem 1.8rem .6rem;}
+.icon{
+width: 1.35rem;
+            height: 1.35rem;
+            background-size: 1.35rem;
+            background-repeat: no-repeat no-repeat;
+            background-position: center;
+}
+.icon-reg{width: 1.5rem;
+            height: 1.5rem;
+            background-size: 1.5rem;
+            background-repeat: no-repeat no-repeat;
+            background-position: center;  display: block;}
+.user {
+            background-image: url("../images/login/user.png");
+        }
+
+        .password {
+            background-image: url("../images/login/pass.png");
+        }
+        .mobile {
+            background-image: url("../images/login/mobile.png");
+        }
+
+        .valid-pass {
+            background-image: url("../images/login/valid-pass.png");
+        }
+.list-block .item-input{position:relative;line-height: 2.15rem;vertical-align: middle;  height: 2.15rem;    padding-right: 2rem;}
+.btn-small{
+	  position: absolute;
+  right: 0;
+  top: .3rem;
+  display: block;
+  color: #fff;
+  padding: 0 .5rem;
+  text-align: center;
+  border-radius: 4px;
+  height: 1.45rem;
+  line-height: 1.45rem;
+ border: 1px solid #ee4a49;
+  background-color: #ee4a49;
+  font-size: .75rem;
+
+}
+.btn-grey{
+border: 1px solid #ccc;
+ background-color: #ccc;
+}
+  
+
+.forgetPass{font-size: .7rem;
+    height: 1.1rem;
+    margin: .2rem 0;  text-align: center;}
+    .font-normal{color:#3d4145;}
+.mar{margin-left:.6rem;margin-right:.6rem;} 
+.button-danger.button-fill{  background-color: #ee4a49;}   
+.list-block .item-inner{padding-top:.52rem;padding-right:0;}
+.list-block .item-inner:after{height:0;}
+.list-block .item-content{border-bottom: 1px solid #eee;}
+.list-block input[type="text"],.list-block input[type="password"],.list-block input[type="tel"]{color:#666;font-size:.75rem;}
+.forgetPass a{color:#666;font-size:.7rem;}
+.list-block .item-media + .item-inner{margin-left:.2rem;}
+
+.close-input {
+  width: 1.75rem;
+  background: #fff url(data:image/png;charset=utf-8;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeBAMAAADJHrORAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAAAqUExURQAAAJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJBDX34AAAAOdFJOUwD+1EAY68AFgF8Sk5YmM0bnrAAAAORJREFUGNNjYAACdutUwbDNBQxQwNUqCAIRC6D8qYIaJuXOTYKREG6NYDKYNhM8DtacKAlVN1EMZAS3qAGUzxy4ASQqDDOXwRCokitwApzPKbqAgUOMAQESGxhKgcrZVIBspwSghnAGQwUGBiYhBwYWRSCfSZhhYwMDkK3C4CQEdB6HNEMiyDYnIRdFLZCNYgyBDgwgBUogaQYWUQZBsLecBLXAbhWE81WgfLh6B4h6qHlLFFUg5kHs0wIKOYDtg7hnAVBMAewesHuzEO5F9w+6f9HDAyO80MMTPbwx4gMjvpDjEwAZ3zJPeAgP+gAAAABJRU5ErkJggg==) no-repeat center;
+  background-size: .8rem;
+  height: 2rem;
+  position: absolute;
+  right: .3rem;
+  top: 0;
+  display: none;
+    z-index: 10;
+}
+.list-block .valid-wrap{padding-right: .75rem;}
+.list-block .valid-wrap .item-input{padding-right: 6.8rem;}
+.valid-wrap .close-input{ right: 5rem;}
+.valid-wrap a:active{color:#fff;}
+.list-block input[type="text"],.list-block input[type="tel"],.list-block input[type="password"]{  padding-right: 0;vertical-align: middle;  line-height: 1;
+ }

@@ -1,0 +1,5 @@
+{{each data as value i}}
+<div class="video-btn video-btn{{i+1}}" data-cid="{{value.cid}}" data-aid="{{value.aid}}">
+    <div class="video video{{i+1}}"><h3>{{value.title}}</h3>{{value.content}}</div>
+</div>
+{{/each}}

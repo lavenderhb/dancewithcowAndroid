@@ -1,0 +1,14 @@
+.swiper-slide a,.swiper-slide a img{width:100%;display:block;  height: 5rem;}
+.swiper-container{padding-bottom:0;}
+.swiper-container-horizontal > .swiper-pagination{bottom:0;}
+
+.swiper-pagination-bullet{background: #87bae3;opacity:1;  width: .3rem;
+  height: .3rem;}
+.swiper-pagination-bullet-active {
+  background: #ef4b49;
+}
+.card-header:after{  background-color: #ddd;}
+.card-content-inner li:after{  background-color: #eee;}
+.swiper-container-horizontal > .swiper-pagination .swiper-pagination-bullet {
+  margin: 0 2px;
+}

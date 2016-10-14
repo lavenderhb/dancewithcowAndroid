@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                 >
+    <include
+        android:id="@+id/header"
+        android:layout_height="wrap_content"
+        android:layout_width="fill_parent"
+        layout="@layout/header"/>
+    <EditText
+            android:id="@+id/etSearch"
+            android:layout_below="@id/header"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="10dp"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:singleLine="true"
+            android:background="@drawable/search_frame"
+            android:layout_marginRight="10dp"
+            android:paddingLeft="32dp"
+            android:textSize="12sp"
+            android:hint="股票代码、首字母..."
+            android:textColor="@color/black"
+            android:textColorHint="@color/dialog_text"
+            android:editable="false"
+            />
+
+    <com.ab.view.sliding.AbSlidingTabView
+            android:layout_below="@id/etSearch"
+            android:id="@+id/mAbSlidingTabView"
+            android:layout_marginTop="5dp"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent" />
+
+</RelativeLayout>

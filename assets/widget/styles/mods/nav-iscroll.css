@@ -1,0 +1,103 @@
+/*
+			 iscroll  20160628 统一把#wrapper，#scroller修改为.iscroll-wrapper，.iscroll-scroller
+			 */
+			 .wbox {
+  display: -webkit-flex!important;
+  display: -webkit-box;
+}
+.wbox-flex {
+  -webkit-flex: 1!important;
+  -webkit-box-flex: 1;
+  word-wrap: break-word;
+  word-break: break-all;
+}
+			 .content{overflow-x:hidden;}
+			.iscroll-wrapper {
+				position: relative;
+				z-index: 2;
+				height: 35px;
+				width: 100%;
+				overflow: hidden;
+				border-bottom: 1px solid #ccc;
+			}
+			.iscroll-scroller {
+				position: absolute;
+				z-index: 1;
+				-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+				/*width: 200%;
+				/*-webkit-transform: translateZ(0);
+				 transform: translateZ(0);*/
+				-webkit-touch-callout: none;
+				-webkit-user-select: none;
+				-webkit-text-size-adjust: none;
+				padding-bottom: 0; 
+			}
+			.iscroll-scroller ul {
+				list-style: none;
+				padding: 0;
+				margin: 0;
+				display: -webkit-box
+			}
+			.iscroll-scroller li {
+				width: 10%;
+				line-height: 35px;
+				font-size: 14px;
+				overflow: hidden;
+				text-align: center;
+				color: #666;
+               font-size: .7rem;
+			}
+			/*
+			 iscroll
+			 */
+			.iscroll-scroller .nav_active {
+				color: #ee4a49;
+				font-size: .8rem !important;
+			}
+			nav {
+				width: 100%;
+				display: -webkit-box;
+				  background-color: #fff;
+			}
+			.arrow_down {
+				display: block;
+				background-size: 15px;
+				background-repeat: no-repeat;
+				background-position: center;
+				padding: 15px;
+				background-image: url('../images/news/channel_nav_arrow@2x.png');
+				-webkit-box-flex: 1;
+				-webkit-transform: rotate(180deg);
+				-webkit-transition: All .5s ease;
+			}
+			.arrow_up {
+				-webkit-transform: rotate(0deg);
+				-webkit-transition: All .5s ease;
+			}
+			.switchNav {
+				position: relative;
+				width: 90%;
+				line-height: 35px;
+				text-indent: 10px;
+			}
+			.navTips {
+				width: 70px;
+				height: 15px;
+				position: absolute;
+				right: 0;
+				bottom: 10px;
+				font-size: 12px;
+				line-height: 16px;
+				color: #DE0000;
+				margin-top: 2px;
+				border: 1px solid;
+				border-radius: 10px;
+			}
+			.cover {
+				position: absolute;
+				top: 0;
+				left: 0;
+				right: 0;
+				bottom: 0;
+				z-index: 999;
+			}

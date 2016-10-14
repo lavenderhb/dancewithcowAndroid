@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+		<title>title</title>
+		<link rel="stylesheet" type="text/css" href="../../styles/base/api.css"/>
+		<link rel="stylesheet" type="text/css" href="../../styles/base/sm.css"/>
+		<link rel="stylesheet" type="text/css" href="../../styles/mods/header_level2.css"/>
+		<link rel="stylesheet" href="../../styles/userInfo.css">
+		<!--build:js scripts/common.js -->
+		<script   src="../../scripts/lib/requirejs/require.js"></script>
+		<script type="text/javascript" src='../../scripts/common.js'></script>
+		<!-- endbuild -->
+		<script type="text/javascript" src='../../scripts/rev_rjs.js'></script>
+	</head>
+	<body>
+		<div class="page">
+			<div id="header_placeholder"></div>
+		</div>
+	</body>
+	<script type='text/javascript' src='../../scripts/api.js' charset='utf-8'></script>
+	<script type='text/javascript' src='../../scripts/lib/zeptojs/zepto.min.js' charset='utf-8'></script>
+	<script type='text/javascript' src='../../scripts/sm.js' charset='utf-8'></script>
+	<script>
+		requirejs.config({
+			baseUrl : '../../scripts/lib'
+		});
+	</script>
+	<script type="text/javascript">
+		apiready = function() {
+			$(function() {
+				require(['scripts/mods/header_level2'], function(header) {
+					var header = new header.header_level2({
+						type : 'tel'
+					});
+					api.openFrame({
+						name : 'tel_frm',
+						url : 'tel_frm.html',
+						rect : {
+							x : 0,
+							y : $("#header").height(),
+							w : 'auto',
+							h : 'auto'
+						},
+						bounces : false,
+						pageParam : {
+							currType : 'tel'
+						}
+					});
+				});
+			});
+		};
+	</script>
+</html>

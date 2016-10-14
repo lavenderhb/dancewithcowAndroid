@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:clipToPadding="true"
+                android:fitsSystemWindows="true"
+                android:background="@color/red1">
+    <TextView
+            android:id="@+id/leftBtn"
+            android:layout_alignParentLeft="true"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:textSize="16dp"
+            android:background="@drawable/back_s"
+            android:text=""/>
+    <RadioGroup
+            android:id="@+id/tab"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:orientation="horizontal"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:layout_marginLeft="220dp"
+
+            >
+        <RadioButton
+                android:id="@+id/tabLeft"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="行情"
+                android:textSize="16dp"
+                style="@style/FlatRadioButtonStyle"
+                android:checked="true"
+                android:textColor="@drawable/radio_button_red"
+                android:background="@drawable/flat_round_shape_left" />
+        <RadioButton
+                android:id="@+id/tabRight"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="自选"
+                android:textSize="16dp"
+                style="@style/FlatRadioButtonStyle"
+                android:textColor="@drawable/radio_button_red"
+                android:background="@drawable/flat_round_shape_right" />
+    </RadioGroup>
+    <TextView
+            android:id="@+id/rightBtn"
+            android:layout_alignParentRight="true"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:padding="15dp"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:textColor="@color/white"
+            android:textSize="16dp"
+            android:background="@drawable/search_s"
+            android:text=""/>
+
+
+</RelativeLayout>

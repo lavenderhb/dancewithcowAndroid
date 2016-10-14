@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <title>title</title>
+    
+    <link rel="stylesheet" type="text/css" href="../../styles/base/api.css"/>
+	<link rel="stylesheet" type="text/css" href="../../styles/base/sm.css"/>
+	<link rel="stylesheet" type="text/css" href="../../styles/mods/header_level2.css"/>
+	<link rel="stylesheet" href="../../styles/customeService/customeServiceDetail.css">
+    <!--build:js scripts/common.js -->
+	<script   src="../../scripts/lib/requirejs/require.js"></script>
+	<script type="text/javascript" src='../../scripts/common.js'></script>
+	<!-- endbuild -->
+	<script type="text/javascript" src='../../scripts/rev_rjs.js'></script>
+</head>
+<body>
+    <div class="page">
+		<div id="header_placeholder"></div>
+		<div id="customDetailFrm_placeholder"></div>
+		<div class="bar bar-tab" id="bottom"><div class="btn-wrap"><a href="#" class="button button-fill button-danger" id="btn">发消息</a></div></div>
+	</div>
+</body>
+<script type='text/javascript' src='../../scripts/api.js' charset='utf-8'></script>
+<script type='text/javascript' src='../../scripts/lib/zeptojs/zepto.min.js' charset='utf-8'></script>
+<script type='text/javascript' src='../../scripts/sm.js' charset='utf-8'></script>
+<script type='text/javascript' src='../../scripts/app/TD_CONFIG.js' charset='utf-8'></script>
+<script>
+requirejs.config({
+	baseUrl : '../../scripts/lib'});
+</script>
+<script type="text/javascript">
+	apiready = function(){
+	     $(function(){
+     		require(['scripts/mods/header_level2'],function(header){
+               
+	           var header=new header.header_level2({type:'customeServiceDetail'});
+	           var finalData=null;
+	           $("#btn").on("click",function(){
+	                var uid=$api.getStorage("uid");
+	                if(!uid||uid==""){
+	                	api.openWin({
+							name : 'login',
+							url : '../common/login.html',
+							bounces : false,
+							animation : 'push',
+							scrollToTop : true,
+							rect : {
+								x : 0,
+								y : 0,
+								w : 'auto',
+								h : 'auto'
+							}
+						});
+	                }
+	                else{
+	                    if(api.connectionType=="none"){
+				       	   toast("请检查网络连接");
+				           return;
+				       }
+				       var csid=$api.getStorage("csid");
+                        if(!csid||csid==""){
+                             getAjaxData(csidCallBack,true);
+                        }
+                        else{
+                            csidCallBack();
+                        }
+                        
+	                }
+	           		
+	           });
+	           var headerH=$("#header").height();
+	           var hgt=api.winHeight-headerH-$("#bottom").height();
+	           api.openFrame({
+					name : 'customeServiceDetail_frm',
+					url : 'customeServiceDetail_frm.html',
+					bounces : false,
+					rect : {
+						x : 0,
+						y : headerH,
+						w : 'auto',
+						h : hgt
+					},
+					pageParam:api.pageParam
+				});
+	        });
+	     });
+	     function csidCallBack(){
+            var csid=$api.getStorage("csid");
+            var cname=$api.getStorage("cname");
+            if(csid&&csid!=""){
+                api.openWin({
+                    name : 'interact',
+                    url : '../public/interact.html',
+                    bounces : false,
+                    delay : 200,
+                    pageParam:{csid:csid,cname:cname}
+                });
+            }
+	     }
+	     function toast(msg){
+			api.toast({
+		        msg: msg,
+		        duration:1000,
+		        location: 'bottom'
+		    });
+		}
+		function getAjaxData(callback,displayToast){
+            
+            var uid=$api.getStorage("uid");
+            try{
+//          	$.ajax({
+//		             type: "GET",
+//		             url: td.domain+"/isallowcus/"+uid+"?token="+td.token,
+//		             async: false, 
+//		             success: function(data){
+//	                  var data = JSON.parse(data); 
+//	                    if(data.code==200){
+//	                    	$api.setStorage("csid",data.data.csid);
+//	                    	$api.setStorage("cname",data.data.name);
+//	                    	
+//	                    }
+//	                    else if(data.code==201){
+//	                    	toast("未分配客服");
+//	                    }
+//	                    else{
+//	                    	toast("没有会员ID");
+//	                    }
+//	                 },
+//		              error:function(err){
+//		              	 toast("网络异常，请稍后重试");
+//		              }
+//		         });
+		        api.ajax({
+                    url: td.domain+"/isallowcus/"+uid+"?token="+td.token,
+                    method: "get"
+                },function(ret, err){
+                    if (ret) {
+                         if(ret.code==200){
+                            $api.setStorage("csid",ret.data.csid);
+                            $api.setStorage("cname",ret.data.name);
+                            callback();
+                         }
+                         else if(ret.code==201){
+                            if(displayToast){
+                                toast("未分配客服");
+                            }
+                         }
+                         else{
+                            if(displayToast){
+                                toast("没有会员ID");
+                            }
+                         } 
+                         
+                    } else {
+                        toast("网络异常，请稍后重试");
+                    }
+                }); 
+            }catch(err){
+            	toast("系统异常，请稍后重试");
+            }
+        }
+	};
+</script>
+</html>

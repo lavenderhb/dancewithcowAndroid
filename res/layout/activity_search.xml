@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+				android:orientation="vertical"
+				android:layout_width="fill_parent"
+				android:layout_height="fill_parent"
+>
+	<include
+			android:id="@+id/header"
+			android:layout_height="wrap_content"
+			android:layout_width="fill_parent"
+			layout="@layout/header"/>
+
+	<RelativeLayout
+			android:id="@+id/top"
+			android:layout_below="@id/header"
+			android:layout_width="fill_parent"
+			android:paddingLeft="10dp"
+			android:paddingRight="5dp"
+			android:paddingBottom="3dp"
+			android:background="@color/TextColor"
+			android:layout_height="wrap_content">
+		<Button
+				android:id="@+id/btnSearch"
+				android:layout_marginTop="3dp"
+				android:layout_marginBottom="5dp"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:gravity="center"
+				android:layout_centerVertical="true"
+				android:layout_alignParentRight="true"
+				android:textSize="12sp"
+				android:textStyle="bold"
+				android:background="@drawable/button_search_selector"
+				android:textColor="@color/black"
+				android:text="搜索"
+				android:visibility="gone"
+		/>
+
+		<RelativeLayout
+				android:id="@+id/rlSearchFrameDelete"
+				android:layout_width="fill_parent"
+				android:layout_height="wrap_content"
+				android:layout_centerVertical="true"
+				android:gravity="center_vertical"
+				android:layout_toLeftOf="@id/btnSearch">
+
+			<EditText
+					android:id="@+id/etSearch"
+					android:layout_width="fill_parent"
+					android:layout_height="wrap_content"
+					android:singleLine="true"
+					android:background="@drawable/search_frame"
+					android:layout_marginRight="10dp"
+					android:paddingLeft="32dp"
+					android:textSize="12sp"
+					android:textColor="@color/black"
+					android:textColorHint="@color/dialog_text"
+					android:hint="股票代码、首字母..."/>
+
+			<ImageView
+					android:id="@+id/ivDeleteText"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_alignParentRight="true"
+					android:src="@drawable/delete"
+					android:layout_centerInParent="true"
+					android:paddingRight="20dp"
+					android:visibility="gone"/>
+
+		</RelativeLayout>
+	</RelativeLayout>
+	<include
+			android:id="@+id/line"
+			android:layout_width="fill_parent"
+			android:layout_height="1dp"
+			android:layout_below="@id/top"
+			layout="@layout/line"/>
+	<com.ab.view.pullview.AbPullToRefreshView
+			android:id="@+id/mPullRefreshView"
+			android:layout_width="fill_parent"
+			android:layout_height="fill_parent"
+			android:layout_below="@id/line">
+		<ListView
+				android:id="@+id/result"
+				android:layout_width="fill_parent"
+				android:layout_height="fill_parent"
+		/>
+
+	</com.ab.view.pullview.AbPullToRefreshView>
+
+
+</RelativeLayout>
