@@ -210,6 +210,21 @@ public class GlobMethod {
             return "--";
         }
     }
+    public static String changeCJEToNoYuanStr(String cje) {
+        if (cje.equals(""))
+            return "--";
+        Double numDou = Double.valueOf(cje);
+
+        if (numDou > 0 && numDou <= 10000) {
+            return Math.round(numDou) + "";
+        } else if (numDou > 10000 && numDou <= 100000000) {
+            return Math.round(numDou / 100) / 100.0 + "万";
+        } else if (numDou > 100000000) {
+            return Math.round(numDou / 1000000) / 100.0 + "亿";
+        } else {
+            return "--";
+        }
+    }
 
     public static boolean getIsAdd(String code) {
         List<MyGuPiao> tempList = null;

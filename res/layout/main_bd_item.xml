@@ -45,8 +45,8 @@
             android:src="@drawable/bd_right"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:scaleX="0.5"
-            android:scaleY="0.5"
+            android:scaleX="0.3"
+            android:scaleY="0.3"
     />
     <TextView
             android:id="@+id/percent"

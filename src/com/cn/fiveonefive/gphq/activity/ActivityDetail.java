@@ -237,7 +237,7 @@ public class ActivityDetail extends FragmentActivity implements
             else if(s>0){
                 price.setTextColor(red);
                 upDownPrice.setText("+"+gp.getUpdown());
-                updownPre.setText(GlobMethod.cgPercentToDF(s));
+                updownPre.setText("+"+GlobMethod.cgPercentToDF(s));
 //                upDownPrice.setTextColor(red);
 //                updownPre.setTextColor(red);
                 colorView.setBackground(getResources().getDrawable(R.drawable.round_view_red));
@@ -270,8 +270,8 @@ public class ActivityDetail extends FragmentActivity implements
             low.setText(GlobMethod.cgPriceToDF(gp.getLow()));
             todayOpen.setText(GlobMethod.cgPriceToDF(gp.getOpen()));
 
-            dealNum.setText(GlobMethod.changeCJLToShou(gp.getVolume()));
-            dealMoney.setText(GlobMethod.changeCJEToStr(gp.getTurnover()));
+            dealNum.setText(GlobMethod.changeCJLToNOShou(gp.getVolume()));
+            dealMoney.setText(GlobMethod.changeCJEToNoYuanStr(gp.getTurnover()));
 
             getDataTask=new GetDataTask();
             MyApplication.taskMap.put("detail",getDataTask);

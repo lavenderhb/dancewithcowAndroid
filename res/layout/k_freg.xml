@@ -19,7 +19,7 @@
                 android:layout_marginLeft="5dp"
                 android:text="时间"
                 android:textColor="@color/white"
-                android:textSize="7dp"
+                android:textSize="9dp"
         />
         <TextView
                 android:id="@+id/todayopen"
@@ -29,7 +29,7 @@
                 android:layout_marginLeft="5dp"
                 android:text="今开"
                 android:textColor="@color/white"
-                android:textSize="7dp"
+                android:textSize="9dp"
         />
         <TextView
                 android:id="@+id/high"
@@ -39,7 +39,7 @@
                 android:layout_marginLeft="5dp"
                 android:text="最高"
                 android:textColor="@color/white"
-                android:textSize="7dp"
+                android:textSize="9dp"
         />
         <TextView
                 android:id="@+id/low"
@@ -49,7 +49,7 @@
                 android:layout_marginLeft="5dp"
                 android:text="最低"
                 android:textColor="@color/white"
-                android:textSize="7dp"
+                android:textSize="9dp"
         />
         <TextView
                 android:id="@+id/yest"
@@ -59,7 +59,7 @@
                 android:layout_toRightOf="@id/low"
                 android:text="昨收"
                 android:textColor="@color/white"
-                android:textSize="7dp"
+                android:textSize="9dp"
         />
     </RelativeLayout>
     <RelativeLayout
@@ -112,34 +112,21 @@
                     android:background="@drawable/flat_round_shape_right"
             />
         </RadioGroup>
-        <!--<Spinner-->
-                <!--android:id="@+id/chooseType"-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_alignParentRight="true"-->
-                <!--android:layout_toRightOf="@id/radioGroup"-->
-                <!--android:layout_alignBottom="@id/radioGroup"-->
-                <!--android:layout_alignTop="@id/radioGroup"-->
-                <!--android:layout_marginLeft="10dp"-->
-                <!--android:layout_marginRight="10dp"-->
-                <!--android:spinnerMode="dropdown"-->
-                <!--android:background="@drawable/round_spinner_gray"-->
-        <!--/>-->
-          <TextView
-                  android:id="@+id/chooseType"
-                  android:layout_width="wrap_content"
-                  android:layout_height="wrap_content"
-                  android:layout_alignParentRight="true"
-                  android:layout_toRightOf="@id/radioGroup"
-                  android:layout_alignBottom="@id/radioGroup"
-                  android:layout_alignTop="@id/radioGroup"
-                  android:layout_marginLeft="10dp"
-                  android:layout_marginRight="10dp"
-                  android:text="成交量"
-                  android:textColor="@color/spinner_gray"
-                  android:gravity="center"
-                  android:background="@drawable/spinner_back"
-          />
+        <TextView
+                android:id="@+id/chooseType"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_toRightOf="@id/radioGroup"
+                android:layout_alignBottom="@id/radioGroup"
+                android:layout_alignTop="@id/radioGroup"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:text="成交量"
+                android:textColor="@color/spinner_gray"
+                android:gravity="center"
+                android:background="@drawable/spinner_back"
+        />
     </RelativeLayout>
 
 

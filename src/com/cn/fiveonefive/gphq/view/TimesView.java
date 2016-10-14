@@ -132,28 +132,39 @@ public class TimesView extends GridChart {
             selectIndex = 0;
         }
         TimeViewDto timeViewDto=listTimeViewDto.get(selectIndex);
-        if (!showDetails){
-            String text=""+lowHigh;
-            canvas.drawText(text,
-                    width - 10 - text.length() * DEFAULT_AXIS_TITLE_SIZE / 2.0f,
-                    lowerBottom-lowerHeight+DEFAULT_AXIS_TITLE_SIZE,
-                    textPaint);
-            canvas.drawText("成交量",
-                    2,
-                    lowerBottom-lowerHeight+DEFAULT_AXIS_TITLE_SIZE,
-                    textPaint);
-        }
+
+        String text=""+lowHigh;
+        canvas.drawText(text,
+                width - 10 - text.length() * DEFAULT_AXIS_TITLE_SIZE / 2.0f,
+                lowerBottom-lowerHeight+DEFAULT_AXIS_TITLE_SIZE,
+                textPaint);
+        canvas.drawText("成交量",
+                2,
+                lowerBottom-lowerHeight+DEFAULT_AXIS_TITLE_SIZE,
+                textPaint);
+//
+//        if (!showDetails){
+//            String text=""+lowHigh;
+//            canvas.drawText(text,
+//                    width - 10 - text.length() * DEFAULT_AXIS_TITLE_SIZE / 2.0f,
+//                    lowerBottom-lowerHeight+DEFAULT_AXIS_TITLE_SIZE,
+//                    textPaint);
+//            canvas.drawText("成交量",
+//                    2,
+//                    lowerBottom-lowerHeight+DEFAULT_AXIS_TITLE_SIZE,
+//                    textPaint);
+//        }
         if (showDetails){
             iTimeChange.change(timeViewDto,timeDataBeanChild);
-            String text0=lowHigh+"/"+GlobMethod.changeCJLToNOShou(String.valueOf(timeViewDto.getDoneNum()));
-            canvas.drawText(text0,
-                    width - 10 - text0.length() * DEFAULT_AXIS_TITLE_SIZE / 2.0f,
-                    lowerBottom-lowerHeight+DEFAULT_AXIS_TITLE_SIZE,
-                    textPaint);
-            canvas.drawText("成交量",
-                    2,
-                    lowerBottom-lowerHeight+DEFAULT_AXIS_TITLE_SIZE,
-                    textPaint);
+//            String text0=lowHigh+"/"+GlobMethod.changeCJLToNOShou(String.valueOf(timeViewDto.getDoneNum()));
+//            canvas.drawText(text0,
+//                    width - 10 - text0.length() * DEFAULT_AXIS_TITLE_SIZE / 2.0f,
+//                    lowerBottom-lowerHeight+DEFAULT_AXIS_TITLE_SIZE,
+//                    textPaint);
+//            canvas.drawText("成交量",
+//                    2,
+//                    lowerBottom-lowerHeight+DEFAULT_AXIS_TITLE_SIZE,
+//                    textPaint);
 
 
 //			float left = 5.0f;

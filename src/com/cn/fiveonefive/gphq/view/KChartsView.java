@@ -140,6 +140,7 @@ public class KChartsView extends GridChart implements GridChart.OnTabClickListen
             //点击详情
             drawCandleDetails(canvas);
         }catch (Exception ex){
+            postInvalidate();
             ex.printStackTrace();
         }
 
@@ -166,9 +167,6 @@ public class KChartsView extends GridChart implements GridChart.OnTabClickListen
 
         float lowertop = LOWER_CHART_TOP + 1;
         float lowerHight = getHeight() - lowertop - 4;
-        if (mTabTitle.trim().equalsIgnoreCase("成交量")){
-
-        }
         int selectIndext0 = (int) ((getWidth() - 2.0f - touchX) / mCandleWidth );
         if (selectIndext0>mShowDataNum)
             return;
@@ -179,22 +177,22 @@ public class KChartsView extends GridChart implements GridChart.OnTabClickListen
                     lowertop+DEFAULT_AXIS_TITLE_SIZE,
                     textPaint);
 
-            if (showDetails) {
-                String text=GlobMethod.changeCJLToNOShou(Double.toString(high0))+"/"
-                        +GlobMethod.changeCJLToNOShou(Double.toString(kBeanList.get(selectIndext0).getVolume()));
-                canvas.drawText(text,
-                        width - 15 - text.length() * DEFAULT_AXIS_TITLE_SIZE / 2.0f,
-                        lowertop+DEFAULT_AXIS_TITLE_SIZE,
-                        textPaint);
+//            if (showDetails) {
+//                String text=GlobMethod.changeCJLToNOShou(Double.toString(high0))+"/"
+//                        +GlobMethod.changeCJLToNOShou(Double.toString(kBeanList.get(selectIndext0).getVolume()));
+//                canvas.drawText(text,
+//                        width - 15 - text.length() * DEFAULT_AXIS_TITLE_SIZE / 2.0f,
+//                        lowertop+DEFAULT_AXIS_TITLE_SIZE,
+//                        textPaint);
 
-            }else {
+//            }else {
                 String text=""+GlobMethod.changeCJLToNOShou(Double.toString(high0));
                 canvas.drawText(text,
                         width - 10 - text.length() * DEFAULT_AXIS_TITLE_SIZE / 2.0f,
                         lowertop+DEFAULT_AXIS_TITLE_SIZE,
                         textPaint);
 
-            }
+//            }
 //            canvas.drawText(GlobMethod.changeCJLToShou(Double.toString(kBeanList.get(selectIndext0).getVolume())),
 //                    2,
 //                    lowertop + lowerHight / 2 + DEFAULT_AXIS_TITLE_SIZE*2+2,
