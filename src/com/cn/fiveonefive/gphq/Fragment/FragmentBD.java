@@ -87,6 +87,7 @@ public class FragmentBD extends Fragment {
         bdExpanListAdapter=new ExpanListAdapter(getActivity(),listGroupBD,arrayTitle);
         //设置下拉箭头
         exlvBD.setGroupIndicator(null);
+//        exlvBD.setSelector(new ColorDrawable(Color.TRANSPARENT));
         exlvBD.setAdapter(bdExpanListAdapter);
         exlvBD.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
             @Override

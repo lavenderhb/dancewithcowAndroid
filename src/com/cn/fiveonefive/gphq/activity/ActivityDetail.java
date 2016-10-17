@@ -87,19 +87,21 @@ public class ActivityDetail extends FragmentActivity implements
         red=getResources().getColor(R.color.red1);
         white=getResources().getColor(R.color.white);
         findView();
+        setListener();
+    }
 
-//        WindowManager wm = this.getWindowManager();
-//        int width = wm.getDefaultDisplay().getWidth();
-//        ViewGroup.LayoutParams lp=colorView.getLayoutParams();
-//        lp.width=width/2;
-//        lp.height=30;
-//        colorView.setLayoutParams(lp);
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        setIntent(intent);
+    }
 
+    @Override
+    protected void onResume() {
         name=getIntent().getStringExtra("name");
         symbol=getIntent().getStringExtra("symbol");
         code=getIntent().getStringExtra("code");
         state=getIntent().getBooleanExtra("state",false);
-
         if ((code==null)||(code.equals(""))){
             return;
         }
@@ -115,17 +117,7 @@ public class ActivityDetail extends FragmentActivity implements
                 }
             }
         }
-
         init();
-        setListener();
-        gp=new GPBean();
-        fragmentk.isDo=false;
-    }
-
-    @Override
-    protected void onResume() {
-        getDataTask=new GetDataTask();
-        getDataTask.execute("");
         int i=viewPage.getCurrentItem();
         if (i==0){
             fragmentFS.isDo=true;
@@ -286,6 +278,7 @@ public class ActivityDetail extends FragmentActivity implements
 
 
     private void init(){
+        gp=new GPBean();
         if (getDataTask!=null){
             getDataTask.cancel(true);
             MyApplication.taskMap.remove("detail");

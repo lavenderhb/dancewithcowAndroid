@@ -171,21 +171,6 @@ public class FragmentK extends Fragment implements KChartsView.KChange{
                 return true;
             }
         });
-//        chooseSpin.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-//            @Override
-//            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-//                String chooseStr=chooseSpin.getSelectedItem().toString();
-//
-//                riView.setTitle(chooseStr);
-//                zhouView.setTitle(chooseStr);
-//                yueView.setTitle(chooseStr);
-//            }
-//
-//            @Override
-//            public void onNothingSelected(AdapterView<?> parent) {
-//
-//            }
-//        });
         radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
@@ -502,4 +487,5 @@ public class FragmentK extends Fragment implements KChartsView.KChange{
     public void changePage(int i) {
         ikChange.changePageK(i);
     }
+
 }

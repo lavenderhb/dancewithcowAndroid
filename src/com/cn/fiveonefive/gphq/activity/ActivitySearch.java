@@ -308,7 +308,6 @@ public class ActivitySearch extends AbActivity implements AbPullToRefreshView.On
                         cxBeanList.add(cx);
                     }
                     for(int i=GlobStr.SearchCountOfOnePage*(page-1);i<cxBeanList.size();i++){
-                        Log.d("aaaaaaaaaaaaaaaaaa", cxBeanList.size()+"");
                         GuPiaoMainItem guPiaoMainItem=new GuPiaoMainItem();
                         guPiaoMainItem.setName(cxBeanList.get(i).getName());
                         guPiaoMainItem.setSymbol(cxBeanList.get(i).getSymbol());

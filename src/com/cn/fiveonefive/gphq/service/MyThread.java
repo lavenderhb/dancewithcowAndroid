@@ -17,7 +17,7 @@ public class MyThread extends Thread{
         while (true){
             if (!MyApplication.isDo){
                 try {
-                    Thread.sleep(2000);
+                    Thread.sleep(2*1000);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }

@@ -111,8 +111,7 @@ public class CrashHandler implements UncaughtExceptionHandler {
             }
         }.start();
 
-        //输出到控制台
-        ex.printStackTrace();
+
 
         // 收集设备参数信息
 //        collectDeviceInfo(mContext);
@@ -120,6 +119,8 @@ public class CrashHandler implements UncaughtExceptionHandler {
         saveCrashInfo2File(ex);
         //上传异常到服务器
 //        sendCrashInfo(ex);
+        //输出到控制台
+        ex.printStackTrace();
 
         return true;
     }
@@ -223,7 +224,10 @@ public class CrashHandler implements UncaughtExceptionHandler {
             String fileName = "crash-" + time + "-" + timestamp + ".log";
 
             if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
-                String path = "/sdcard/crash/";
+                String path = Environment
+                        .getExternalStorageDirectory()
+                        + File.separator
+                        +"crash"+File.separator;
                 File dir = new File(path);
                 if (!dir.exists()) {
                     dir.mkdirs();

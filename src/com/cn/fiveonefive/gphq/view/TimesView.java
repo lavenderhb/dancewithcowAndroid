@@ -16,6 +16,8 @@ import com.cn.fiveonefive.gphq.glob.GlobMethod;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class TimesView extends GridChart {
     private final int DATA_MAX_COUNT = 4 * 60;
@@ -33,6 +35,7 @@ public class TimesView extends GridChart {
 
     private boolean showDetails;
     private float touchX;
+    Timer timer;
 //    private float touchY;
 
     private TimeDataBeanChild timeDataBeanChild;
@@ -84,7 +87,7 @@ public class TimesView extends GridChart {
         lowerRate = 0;
         showDetails = false;
         touchX = 0;
-
+        timer=new Timer();
     }
 
 
@@ -395,11 +398,24 @@ public class TimesView extends GridChart {
                 case 0:
                     postInvalidate();
                     break;
+                case 1:
+                    postInvalidate();
+                    break;
                 default:
                     break;
             }
         }
     };
+    class MyTask extends TimerTask {
+
+        @Override
+        public void run() {
+            showDetails=false;
+            Message message=new Message();
+            message.what=1;
+            handler.sendMessage(message);
+        }
+    }
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         switch (event.getAction()) {
@@ -416,6 +432,10 @@ public class TimesView extends GridChart {
                             Message message=new Message();
                             message.what=0;
                             handler.sendMessage(message);
+                            if (timer!=null){
+                                timer.cancel();
+                            }
+
                         }else {
                             showDetails=false;
                         }
@@ -469,6 +489,10 @@ public class TimesView extends GridChart {
 
             case MotionEvent.ACTION_UP:
             case MotionEvent.ACTION_CANCEL:
+                if (TOUCH_MODE==LONG){
+                    timer=new Timer();
+                    timer.schedule(new MyTask(),10*1000);
+                }
                 if (TOUCH_MODE==MOVE){
                     float nowX=event.getRawX();
                     float nowY=event.getRawY();

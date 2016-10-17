@@ -19,6 +19,8 @@ import com.cn.fiveonefive.gphq.glob.GlobMethod;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 
 public class KChartsView extends GridChart implements GridChart.OnTabClickListener {
@@ -79,6 +81,7 @@ public class KChartsView extends GridChart implements GridChart.OnTabClickListen
     KDJEntity mKDJData;
     //    RSIEntity mRSIData;
     KChange kChange;
+    Timer timer;
 
 
     public KChartsView(Context context) {
@@ -111,7 +114,7 @@ public class KChartsView extends GridChart implements GridChart.OnTabClickListen
         mMaxPrice = -1;
         mMinPrice = -1;
         mTabTitle = "成交量";
-
+        timer=new Timer();
         kBeanList = new ArrayList<KBean>();
         mMACDData = new MACDEntity(null);
         mKDJData = new KDJEntity(null);
@@ -129,35 +132,32 @@ public class KChartsView extends GridChart implements GridChart.OnTabClickListen
         if (kBeanList == null || kBeanList.size() <= 0) {
             return;
         }
-        try {
-            //上部数据
-            drawUpperRegion(canvas);
-            getVolumnData();
-            //下部数据
-            drawLowerRegion(canvas);
-            //xy轴详情
-            drawTitles(canvas);
-            //点击详情
-            drawCandleDetails(canvas);
-        }catch (Exception ex){
-            postInvalidate();
-            ex.printStackTrace();
-        }
-
+        getVolumnData();
+        //上部数据
+        drawUpperRegion(canvas);
+        //下部数据
+        drawLowerRegion(canvas);
+        //xy轴详情
+        drawTitles(canvas);
+        //点击详情
+        drawCandleDetails(canvas);
     }
     double low0=0.0;
     double high0 = 0.0;
     double rate0 = 0.0;
     private void getVolumnData(){
+        float lowertop = LOWER_CHART_TOP + 1;
+        float lowerHight = getHeight() - lowertop - 4;
         low0 = kBeanList.get(mDataStartIndext).getVolume();
         high0 = low0;
         rate0 = 0.0;
         for (int i = mDataStartIndext; i < mDataStartIndext + mShowDataNum && i < kBeanList.size(); i++) {
             low0 = low0 < kBeanList.get(i).getVolume() ? low0 : kBeanList.get(i).getVolume();
-
             high0 = high0 > kBeanList.get(i).getVolume() ? high0 : kBeanList.get(i).getVolume();
         }
+        rate0 = lowerHight / (high0 - low0);
     }
+
 
     private void drawCandleDetails(Canvas canvas) {
         Paint textPaint = new Paint();
@@ -176,43 +176,15 @@ public class KChartsView extends GridChart implements GridChart.OnTabClickListen
                     2,
                     lowertop+DEFAULT_AXIS_TITLE_SIZE,
                     textPaint);
-
-//            if (showDetails) {
-//                String text=GlobMethod.changeCJLToNOShou(Double.toString(high0))+"/"
-//                        +GlobMethod.changeCJLToNOShou(Double.toString(kBeanList.get(selectIndext0).getVolume()));
-//                canvas.drawText(text,
-//                        width - 15 - text.length() * DEFAULT_AXIS_TITLE_SIZE / 2.0f,
-//                        lowertop+DEFAULT_AXIS_TITLE_SIZE,
-//                        textPaint);
-
-//            }else {
-                String text=""+GlobMethod.changeCJLToNOShou(Double.toString(high0));
-                canvas.drawText(text,
-                        width - 10 - text.length() * DEFAULT_AXIS_TITLE_SIZE / 2.0f,
-                        lowertop+DEFAULT_AXIS_TITLE_SIZE,
-                        textPaint);
-
-//            }
-//            canvas.drawText(GlobMethod.changeCJLToShou(Double.toString(kBeanList.get(selectIndext0).getVolume())),
-//                    2,
-//                    lowertop + lowerHight / 2 + DEFAULT_AXIS_TITLE_SIZE*2+2,
-//                    textPaint);
-//
-//            canvas.drawText(GlobMethod.changeCJLToShou(Double.toString(high0)), 2, lowertop
-//                    + lowerHight / 2 + DEFAULT_AXIS_TITLE_SIZE+2, textPaint);
+            String text=""+GlobMethod.changeCJLToNOShou(Double.toString(high0));
+            canvas.drawText(text,
+                    width - 10 - text.length() * DEFAULT_AXIS_TITLE_SIZE / 2.0f,
+                    lowertop+DEFAULT_AXIS_TITLE_SIZE,
+                    textPaint);
         }
 
 
         if (showDetails) {
-//            float left = 3.0f;
-//            float top = (float) (5.0 + DEFAULT_AXIS_TITLE_SIZE);
-//            float right = 3.0f + 9 * DEFAULT_AXIS_TITLE_SIZE;
-//            float bottom = 8.0f + 7 * DEFAULT_AXIS_TITLE_SIZE;
-//            if (mStartX < width / 2.0f) {
-//                right = width - 4.0f;
-//                left = width - 4.0f - 9 * DEFAULT_AXIS_TITLE_SIZE;
-//            }
-//
             int selectIndext = (int) ((width - 2.0f -touchX ) / mCandleWidth + mDataStartIndext);
             int chooseIndext=(int) ((width - 2.0f - touchX) / mCandleWidth );
             float startX = (float) (width - 3 - mCandleWidth * chooseIndext - (mCandleWidth - 1) / 2);
@@ -235,107 +207,6 @@ public class KChartsView extends GridChart implements GridChart.OnTabClickListen
             float drawY=(float) ((mMaxPrice - kBeanList.get(selectIndext).getOpen()) * rate+DEFAULT_AXIS_TITLE_SIZE + 4);
             canvas.drawLine(1.0f,drawY,width-1.0f,drawY,paint);
 
-
-//            paint.setColor(getResources().getColor(R.color.gray2));
-//            canvas.drawRect(left, top, right, bottom, paint);
-//
-//            Paint borderPaint = new Paint();
-//            borderPaint.setColor(getResources().getColor(R.color.white));
-//            borderPaint.setStrokeWidth(2);
-//            canvas.drawLine(left, top, left, bottom, borderPaint);
-//            canvas.drawLine(left, top, right, top, borderPaint);
-//            canvas.drawLine(right, bottom, right, top, borderPaint);
-//            canvas.drawLine(right, bottom, left, bottom, borderPaint);
-//
-//            // 绘制详情文字
-////			textPaint.setFakeBoldText(true);
-//            canvas.drawText("日期: " + GlobMethod.changeDataToData(kBeanList.get(selectIndext).getDate()), left + 1, top
-//                    + DEFAULT_AXIS_TITLE_SIZE, textPaint);
-//            kChange.change(kBeanList.get(selectIndext));
-//            canvas.drawText("开盘:", left + 1, top + DEFAULT_AXIS_TITLE_SIZE * 2.0f, textPaint);
-//            double open = kBeanList.get(selectIndext).getOpen();
-//            try {
-//                double ysdclose = kBeanList.get(selectIndext + 1).getClose();
-//                if (open >= ysdclose) {
-//                    textPaint.setColor(Color.RED);
-//                } else {
-//                    textPaint.setColor(Color.GREEN);
-//                }
-//                canvas.drawText(new DecimalFormat("#.##").format(open), left + 1
-//                                + DEFAULT_AXIS_TITLE_SIZE * 2.5f, top + DEFAULT_AXIS_TITLE_SIZE * 2.0f,
-//                        textPaint);
-//            } catch (Exception e) {
-//                canvas.drawText(new DecimalFormat("#.##").format(open), left + 1
-//                                + DEFAULT_AXIS_TITLE_SIZE * 2.5f, top + DEFAULT_AXIS_TITLE_SIZE * 2.0f,
-//                        textPaint);
-//            }
-//
-//            textPaint.setColor(Color.WHITE);
-//            canvas.drawText("最高:", left + 1, top + DEFAULT_AXIS_TITLE_SIZE * 3.0f, textPaint);
-//            double high = kBeanList.get(selectIndext).getHigh();
-//            if (open < high) {
-//                textPaint.setColor(Color.RED);
-//            } else {
-//                textPaint.setColor(Color.GREEN);
-//            }
-//            canvas.drawText(new DecimalFormat("#.##").format(high), left + 1
-//                            + DEFAULT_AXIS_TITLE_SIZE * 2.5f, top + DEFAULT_AXIS_TITLE_SIZE * 3.0f,
-//                    textPaint);
-//
-//            textPaint.setColor(Color.WHITE);
-//            canvas.drawText("最低:", left + 1, top + DEFAULT_AXIS_TITLE_SIZE * 4.0f, textPaint);
-//            double low = kBeanList.get(selectIndext).getLow();
-//            try {
-//                double yesterday = (kBeanList.get(selectIndext + 1).getLow() + kBeanList.get(
-//                        selectIndext + 1).getHigh()) / 2.0f;
-//                if (yesterday <= low) {
-//                    textPaint.setColor(Color.RED);
-//                } else {
-//                    textPaint.setColor(Color.GREEN);
-//                }
-//            } catch (Exception e) {
-//
-//            }
-//            canvas.drawText(new DecimalFormat("#.##").format(low), left + 1
-//                            + DEFAULT_AXIS_TITLE_SIZE * 2.5f, top + DEFAULT_AXIS_TITLE_SIZE * 4.0f,
-//                    textPaint);
-//
-//            textPaint.setColor(Color.WHITE);
-//            canvas.drawText("收盘:", left + 1, top + DEFAULT_AXIS_TITLE_SIZE * 5.0f, textPaint);
-//            double close = kBeanList.get(selectIndext).getClose();
-//            try {
-//                double yesdopen = (kBeanList.get(selectIndext + 1).getLow() + kBeanList.get(
-//                        selectIndext + 1).getHigh()) / 2.0f;
-//                if (yesdopen <= close) {
-//                    textPaint.setColor(Color.RED);
-//                } else {
-//                    textPaint.setColor(Color.GREEN);
-//                }
-//            } catch (Exception e) {
-//
-//            }
-//            canvas.drawText(new DecimalFormat("#.##").format(close), left + 1
-//                            + DEFAULT_AXIS_TITLE_SIZE * 2.5f, top + DEFAULT_AXIS_TITLE_SIZE * 5.0f,
-//                    textPaint);
-//
-//            textPaint.setColor(Color.WHITE);
-//            canvas.drawText("成交量:", left + 1, top + DEFAULT_AXIS_TITLE_SIZE * 6.0f, textPaint);
-//            try {
-//                double volume = kBeanList.get(selectIndext).getVolume();
-////                double yesdclose = kBeanList.get(selectIndext + 1).getClose();
-////                double priceRate = (close - yesdclose) / yesdclose;
-////                if (priceRate >= 0) {
-////                    textPaint.setColor(Color.RED);
-////                } else {
-////                    textPaint.setColor(Color.GREEN);
-////                }
-//                canvas.drawText(GlobMethod.changeCJLToShou(Double.toString(volume)), left + 1
-//                                + DEFAULT_AXIS_TITLE_SIZE * 3.5f, top + DEFAULT_AXIS_TITLE_SIZE * 6.0f,
-//                        textPaint);
-//            } catch (Exception e) {
-//                canvas.drawText("--", left + 1 + DEFAULT_AXIS_TITLE_SIZE * 3.5f, top
-//                        + DEFAULT_AXIS_TITLE_SIZE * 6.0f, textPaint);
-//            }
         }
 
     }
@@ -344,7 +215,6 @@ public class KChartsView extends GridChart implements GridChart.OnTabClickListen
         Paint textPaint = new Paint();
         textPaint.setColor(DEFAULT_AXIS_Y_TITLE_COLOR);
         textPaint.setTextSize(DEFAULT_AXIS_TITLE_SIZE);
-
         // Y轴Titles
         canvas.drawText(new DecimalFormat("#.##").format(mMinPrice), 1, UPER_CHART_BOTTOM - 1,
                 textPaint);
@@ -405,7 +275,6 @@ public class KChartsView extends GridChart implements GridChart.OnTabClickListen
                 canvas.drawRect(left, close, right, open, redPaint);
                 canvas.drawLine(startX, high, startX, low, redPaint);
             }
-
         }
 
         // 绘制上部曲线图及上部分MA值
@@ -428,11 +297,14 @@ public class KChartsView extends GridChart implements GridChart.OnTabClickListen
                                 selectIndext)), 7 + MATitleWidth * j,
                         DEFAULT_AXIS_TITLE_SIZE, paint);
             }else {
+                int index=lineEntity.getLineData().size();
+                int indexNow=mDataStartIndext+mShowDataNum;
+                indexNow=indexNow>index?index:indexNow;
                 canvas.drawText(
                         lineEntity.getTitle()
                                 + "="
                                 + new DecimalFormat("#.##").format(lineEntity.getLineData().get(
-                                mDataStartIndext+mShowDataNum)), 7 + MATitleWidth * j,
+                                indexNow-1)), 7 + MATitleWidth * j,
                         DEFAULT_AXIS_TITLE_SIZE, paint);
             }
             for (int i = 0; i < mShowDataNum
@@ -476,11 +348,9 @@ public class KChartsView extends GridChart implements GridChart.OnTabClickListen
         textPaint.setColor(DEFAULT_AXIS_Y_TITLE_COLOR);
         textPaint.setTextSize(DEFAULT_AXIS_TITLE_SIZE);
 
-
         //draw volume
         if (mTabTitle.trim().equalsIgnoreCase("成交量")){
 
-            rate0 = lowerHight / (high0 - low0);
             Paint redPaint = new Paint();
             redPaint.setColor(getResources().getColor(R.color.red0));
             Paint greenPaint = new Paint();
@@ -599,7 +469,6 @@ public class KChartsView extends GridChart implements GridChart.OnTabClickListen
 //            canvas.drawText(new DecimalFormat("#.##").format((low) ), 2, lowertop
 //                    + lowerHight / 2 -5, textPaint);
 
-
             canvas.drawText(new DecimalFormat("#.##").format(high), 2, lowertop
                     + DEFAULT_AXIS_TITLE_SIZE - 2, textPaint);
             canvas.drawText(new DecimalFormat("#.##").format((high + low) / 2), 2, lowertop
@@ -692,11 +561,24 @@ public class KChartsView extends GridChart implements GridChart.OnTabClickListen
                 case 0:
                     postInvalidate();
                     break;
+                case 1:
+                    postInvalidate();
+                    break;
                 default:
                     break;
             }
         }
     };
+    class MyTask extends TimerTask{
+
+        @Override
+        public void run() {
+            showDetails=false;
+            Message message=new Message();
+            message.what=1;
+            handler.sendMessage(message);
+        }
+    }
     @Override
     public boolean onTouchEvent(MotionEvent event) {
 //        super.onTouchEvent(event);
@@ -720,16 +602,9 @@ public class KChartsView extends GridChart implements GridChart.OnTabClickListen
             return true;
         }
 
-
-
         switch (event.getAction() & MotionEvent.ACTION_MASK) {
             // 设置触摸模式
             case MotionEvent.ACTION_DOWN:
-//                TOUCH_MODE = DOWN;
-//                mStartX = event.getRawX();
-//                mStartY = event.getRawY();
-
-
                 mStartX = event.getRawX();
                 mStartY = event.getRawY();
                 touchX = event.getRawX();
@@ -749,10 +624,9 @@ public class KChartsView extends GridChart implements GridChart.OnTabClickListen
                                 message.what=0;
                                 handler.sendMessage(message);
                             }
-//                            showDetails=true;
-//                            Message message=new Message();
-//                            message.what=0;
-//                            handler.sendMessage(message);
+                            if (timer!=null){
+                                timer.cancel();
+                            }
                         }else {
                             showDetails=false;
                         }
@@ -766,20 +640,11 @@ public class KChartsView extends GridChart implements GridChart.OnTabClickListen
 
                 break;
             case MotionEvent.ACTION_UP:
-//            case MotionEvent.ACTION_POINTER_UP:
-//                if (TOUCH_MODE == DOWN) {
-//                    TOUCH_MODE = NONE;
-//                    if (!super.onTouchEvent(event)) {
-//                        if (mStartX > 2.0f && mStartX < getWidth() - 2.0f) {
-//                            showDetails = true;
-//                        }
-//                    }
-//                    postInvalidate();
-//                } else {
-//                    TOUCH_MODE = NONE;
-//                }
-//                break;
             case MotionEvent.ACTION_CANCEL:
+                if (TOUCH_MODE==LONG){
+                    timer=new Timer();
+                    timer.schedule(new MyTask(),10*1000);
+                }
                 if (TOUCH_MODE==MOVE){
                     float nowX=event.getRawX();
                     float nowY=event.getRawY();
@@ -790,9 +655,6 @@ public class KChartsView extends GridChart implements GridChart.OnTabClickListen
                     }
                 }
                 TOUCH_MODE=NONE;
-
-
-//                TOUCH_MODE = NONE;
                 break;
             case MotionEvent.ACTION_MOVE:
                 if (TOUCH_MODE==DOWN){
@@ -801,14 +663,10 @@ public class KChartsView extends GridChart implements GridChart.OnTabClickListen
                         break;
                     TOUCH_MODE=MOVE;
                     showDetails=false;
-//                    return false;
-//                    return super.onTouchEvent(event);
                     break;
                 }else if (TOUCH_MODE==LONG){
                     touchX = event.getRawX();
                     if (touchX < 2 || touchX > getWidth() - 2) {
-//                        return false;
-//                        return super.onTouchEvent(event);
                         break;
                     }
                     int selectIndext = (int) ((getWidth() - 2.0f - touchX) /
@@ -826,48 +684,6 @@ public class KChartsView extends GridChart implements GridChart.OnTabClickListen
                 showDetails = false;
                 postInvalidate();
                 break;
-
-//                if (kBeanList == null || kBeanList.size() <= 0) {
-//                    return true;
-//                }
-//                showDetails = false;
-//                if (TOUCH_MODE == MOVE) {
-//                    float horizontalSpacing = event.getRawX() - mStartX;
-//                    if (Math.abs(horizontalSpacing) < MIN_MOVE_DISTANCE) {
-//                        return true;
-//                    }
-//                    mStartX = event.getRawX();
-//                    mStartY = event.getRawY();
-//                    if (horizontalSpacing < 0) {
-//                        mDataStartIndext--;
-//                        if (mDataStartIndext < 0) {
-//                            mDataStartIndext = 0;
-//                        }
-//                    } else if (horizontalSpacing > 0) {
-//                        mDataStartIndext++;
-//                    }
-//                    setCurrentData();
-//                    postInvalidate();
-//                } else if (TOUCH_MODE == ZOOM) {
-//                    float verticalSpacing = event.getRawY() - mStartY;
-//                    if (Math.abs(verticalSpacing) < MIN_MOVE_DISTANCE) {
-//                        return true;
-//                    }
-//                    mStartX = event.getRawX();
-//                    mStartY = event.getRawY();
-//                    if (verticalSpacing < 0) {
-//                        zoomOut();
-//                    } else {
-//                        zoomIn();
-//                    }
-//                    setCurrentData();
-//                    postInvalidate();
-//
-//                } else if (TOUCH_MODE == DOWN) {
-//                    setTouchMode(event);
-//                }
-
-//                break;
         }
         return true;
     }
@@ -907,6 +723,8 @@ public class KChartsView extends GridChart implements GridChart.OnTabClickListen
     }
 
     public void right(){
+        if (kBeanList.size()<=0)
+            return;
         mDataStartIndext=mDataStartIndext-mShowDataNum;
         if (mDataStartIndext < 0) {
             mDataStartIndext = 0;
@@ -916,6 +734,8 @@ public class KChartsView extends GridChart implements GridChart.OnTabClickListen
     }
 
     public void left(){
+        if (kBeanList.size()<=0)
+            return;
         mDataStartIndext=mDataStartIndext+mShowDataNum;
         while (mDataStartIndext > kBeanList.size()-mShowDataNum) {
             mDataStartIndext--;
@@ -925,6 +745,8 @@ public class KChartsView extends GridChart implements GridChart.OnTabClickListen
     }
 
     public void up() {
+        if (kBeanList.size()<=0)
+            return;
         mShowDataNum=mShowDataNum*2;
         if (mShowDataNum > kBeanList.size()) {
             mShowDataNum = MIN_CANDLE_NUM > kBeanList.size() ? MIN_CANDLE_NUM : kBeanList.size();
@@ -934,6 +756,8 @@ public class KChartsView extends GridChart implements GridChart.OnTabClickListen
     }
 
     public void down() {
+        if (kBeanList.size()<=0)
+            return;
         mShowDataNum= (int) Math.ceil(mShowDataNum/2);
         if (mShowDataNum < MIN_CANDLE_NUM) {
             mShowDataNum = MIN_CANDLE_NUM;
