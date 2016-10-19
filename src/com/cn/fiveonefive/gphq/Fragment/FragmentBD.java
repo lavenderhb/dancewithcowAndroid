@@ -44,6 +44,7 @@ public class FragmentBD extends Fragment {
     private String[] arrayTitle;
     public boolean isDo=false;
     Gson gson;
+    int gray2;
 
     private GetDataTask getDataTask;
     Handler handler=new Handler(){
@@ -64,6 +65,7 @@ public class FragmentBD extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         gson=new Gson();
+        gray2=getResources().getColor(R.color.gray2);
     }
     @Nullable
     @Override
@@ -83,11 +85,11 @@ public class FragmentBD extends Fragment {
         listGroupBD.add(listDF);
         listGroupBD.add(listHSL);
         listGroupBD.add(listZHF);
-        arrayTitle=new String[]{"涨幅","跌幅","换手率","振幅榜"};
+        arrayTitle=new String[]{"涨幅榜","跌幅榜","换手率榜","振幅榜"};
         bdExpanListAdapter=new ExpanListAdapter(getActivity(),listGroupBD,arrayTitle);
         //设置下拉箭头
         exlvBD.setGroupIndicator(null);
-//        exlvBD.setSelector(new ColorDrawable(Color.TRANSPARENT));
+//        exlvBD.setSelector(new ColorDrawable(gray2));
         exlvBD.setAdapter(bdExpanListAdapter);
         exlvBD.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
             @Override
@@ -106,8 +108,8 @@ public class FragmentBD extends Fragment {
                     baseBeanList.add(baseBean);
                 }
                 intent.putExtra("beanList",gson.toJson(baseBeanList));
-
                 startActivity(intent);
+//                bdExpanListAdapter.notifyDataSetChanged();
                 return true;
             }
         });

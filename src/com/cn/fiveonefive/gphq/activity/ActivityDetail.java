@@ -13,7 +13,7 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.ab.util.AbToastUtil;
 import com.ab.view.sample.AbViewPager;
@@ -48,7 +48,7 @@ public class ActivityDetail extends FragmentActivity implements
             upDownPrice,updownPre,addOrDeletePic,addorDeleteText,todayOpen,
             top,dealNum,low,dealMoney,changeHand;
     AbViewPager viewPage;
-    RelativeLayout colorView;
+    LinearLayout colorView;
 
 
 
@@ -465,7 +465,7 @@ public class ActivityDetail extends FragmentActivity implements
         low= (TextView) findViewById(R.id.low);
         dealMoney= (TextView) findViewById(R.id.dealmoney);
         viewPage= (AbViewPager) findViewById(R.id.viewPage);
-        colorView= (RelativeLayout) findViewById(R.id.colorview);
+        colorView= (LinearLayout) findViewById(R.id.colorview);
         tabLeft= (ImageView) findViewById(R.id.left);
         tabRight= (ImageView) findViewById(R.id.right);
 

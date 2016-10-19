@@ -7,6 +7,7 @@ import android.graphics.Paint;
 import android.os.Handler;
 import android.os.Message;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.MotionEvent;
 import com.cn.fiveonefive.gphq.R;
 import com.cn.fiveonefive.gphq.dto.TimeDataBeanChild;
@@ -44,6 +45,7 @@ public class TimesView extends GridChart {
     public interface ITimeChange{
         void change(TimeViewDto timeViewDto,TimeDataBeanChild timeDataBeanChild);
         void changePage(int i);
+        void setNull();
     }
     public void setInter(ITimeChange iTimeChange){
         this.iTimeChange=iTimeChange;
@@ -101,6 +103,7 @@ public class TimesView extends GridChart {
         uperHeight = getUperChartHeight() - 4;
         lowerBottom = getHeight() - 3;
         lowerHeight = getLowerChartHeight() - 2;
+        Log.d("fsView-LowerChartHeight", getLowerChartHeight()+"");
         dataSpacing = (getWidth() - 4) * 10.0f / 10.0f / DATA_MAX_COUNT;
 
         if (uperHalfHigh > 0) {
@@ -135,8 +138,12 @@ public class TimesView extends GridChart {
             selectIndex = 0;
         }
         TimeViewDto timeViewDto=listTimeViewDto.get(selectIndex);
-
-        String text=""+lowHigh;
+        String text="";
+        if (showDetails){
+            text=""+GlobMethod.changeCJLToNOShou(String.valueOf(timeViewDto.getDoneNum()));
+        }else {
+            text=""+lowHigh;
+        }
         canvas.drawText(text,
                 width - 10 - text.length() * DEFAULT_AXIS_TITLE_SIZE / 2.0f,
                 lowerBottom-lowerHeight+DEFAULT_AXIS_TITLE_SIZE,
@@ -145,45 +152,11 @@ public class TimesView extends GridChart {
                 2,
                 lowerBottom-lowerHeight+DEFAULT_AXIS_TITLE_SIZE,
                 textPaint);
-//
-//        if (!showDetails){
-//            String text=""+lowHigh;
-//            canvas.drawText(text,
-//                    width - 10 - text.length() * DEFAULT_AXIS_TITLE_SIZE / 2.0f,
-//                    lowerBottom-lowerHeight+DEFAULT_AXIS_TITLE_SIZE,
-//                    textPaint);
-//            canvas.drawText("成交量",
-//                    2,
-//                    lowerBottom-lowerHeight+DEFAULT_AXIS_TITLE_SIZE,
-//                    textPaint);
-//        }
+        Log.d("fsView--lowerHeight", lowerHeight+"");
+        iTimeChange.setNull();
         if (showDetails){
             iTimeChange.change(timeViewDto,timeDataBeanChild);
-//            String text0=lowHigh+"/"+GlobMethod.changeCJLToNOShou(String.valueOf(timeViewDto.getDoneNum()));
-//            canvas.drawText(text0,
-//                    width - 10 - text0.length() * DEFAULT_AXIS_TITLE_SIZE / 2.0f,
-//                    lowerBottom-lowerHeight+DEFAULT_AXIS_TITLE_SIZE,
-//                    textPaint);
-//            canvas.drawText("成交量",
-//                    2,
-//                    lowerBottom-lowerHeight+DEFAULT_AXIS_TITLE_SIZE,
-//                    textPaint);
 
-
-//			float left = 5.0f;
-//			float top = 4.0f;
-//			float right = 3.0f + 10 * DEFAULT_AXIS_TITLE_SIZE;
-//			float bottom = 7.0f + 4 * DEFAULT_AXIS_TITLE_SIZE;
-//			if (touchX < width / 2.0f) {
-//				right = width - 4.0f-30.0f*3;
-//				left = width - 4.0f - 10 * DEFAULT_AXIS_TITLE_SIZE-30.0f*3;
-//			}
-            //todo
-//			if (Integer.parseInt(listTimeViewDto.get(listTimeViewDto.size()-1).getTime())<1500){
-//				if(touchX>3+(listTimeViewDto.size()-1)*dataSpacing){
-//					touchX=3+(listTimeViewDto.size()-1)*dataSpacing;
-//				}
-//			}
 
             // 绘制点击线条及详情区域
             Paint paint = new Paint();
@@ -303,9 +276,11 @@ public class TimesView extends GridChart {
         canvas.drawText(new DecimalFormat("#.##").format(uperHalfHigh + Float.parseFloat(timeDataBeanChild.getYestclose())), 2,
                 DEFAULT_AXIS_TITLE_SIZE, paint);
         text = new DecimalFormat("#.##%").format(uperHalfHigh / Float.parseFloat(timeDataBeanChild.getYestclose()));
-        canvas.drawText(text, viewWidth - 6 - text.length() * DEFAULT_AXIS_TITLE_SIZE / 2.0f,
-                DEFAULT_AXIS_TITLE_SIZE, paint);
-
+        String symbol=timeDataBeanChild.getSymbol();
+        if (symbol.equals("000001")||symbol.equals("399001")||symbol.equals("399300")) {
+            canvas.drawText(text, viewWidth - 6 - text.length() * DEFAULT_AXIS_TITLE_SIZE / 2.0f,
+                    DEFAULT_AXIS_TITLE_SIZE, paint);
+        }
         // 绘制X轴Titles
         canvas.drawText("09:30", 2, uperBottom + DEFAULT_AXIS_TITLE_SIZE, paint);
         canvas.drawText("11:30/13:00", viewWidth / 2.0f - DEFAULT_AXIS_TITLE_SIZE * 2.5f,
@@ -435,23 +410,11 @@ public class TimesView extends GridChart {
                             if (timer!=null){
                                 timer.cancel();
                             }
-
                         }else {
                             showDetails=false;
                         }
                     }
                 }, 1000);
-//                if (TOUCH_MODE==DOWN){
-//                    long nowTime=event.getEventTime();
-//                    if (nowTime-mStartTime<500){
-//                        break;
-//                    }else{
-//                        showDetails=true;
-//                        TOUCH_MODE=LONG;
-//                        postInvalidate();
-//                        break;
-//                    }
-//                }else
                 if (TOUCH_MODE==NONE){
                     TOUCH_MODE = DOWN;
                     mStartTime=event.getEventTime();
@@ -482,9 +445,6 @@ public class TimesView extends GridChart {
                 }else if (TOUCH_MODE==MOVE){
 //                    return false;
                 }
-//                touchY = event.getY();
-//                showDetails = true;
-//                postInvalidate();
                 break;
 
             case MotionEvent.ACTION_UP:

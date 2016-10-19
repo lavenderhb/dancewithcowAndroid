@@ -101,6 +101,7 @@ public class KChartsView extends GridChart implements GridChart.OnTabClickListen
     public interface KChange{
         void change(KBean kBean);
         void changePage(int i);
+        void setNull();
     }
     public void setInter(KChange kChange){
         this.kChange=kChange;
@@ -167,8 +168,9 @@ public class KChartsView extends GridChart implements GridChart.OnTabClickListen
 
         float lowertop = LOWER_CHART_TOP + 1;
         float lowerHight = getHeight() - lowertop - 4;
-        int selectIndext0 = (int) ((getWidth() - 2.0f - touchX) / mCandleWidth );
-        if (selectIndext0>mShowDataNum)
+        int selectIndext = (int) ((width - 2.0f -touchX ) / mCandleWidth + mDataStartIndext);
+        int chooseIndext=(int) ((width - 2.0f - touchX) / mCandleWidth );
+        if (chooseIndext>mShowDataNum)
             return;
 
         if (mTabTitle.trim().equalsIgnoreCase("成交量")){
@@ -176,17 +178,20 @@ public class KChartsView extends GridChart implements GridChart.OnTabClickListen
                     2,
                     lowertop+DEFAULT_AXIS_TITLE_SIZE,
                     textPaint);
-            String text=""+GlobMethod.changeCJLToNOShou(Double.toString(high0));
+            String text="";
+            if (showDetails){
+                text = "" + GlobMethod.changeCJLToNOShou(Double.toString(kBeanList.get(selectIndext).getVolume()));
+            }else {
+                text = "" + GlobMethod.changeCJLToNOShou(Double.toString(high0));
+            }
             canvas.drawText(text,
                     width - 10 - text.length() * DEFAULT_AXIS_TITLE_SIZE / 2.0f,
                     lowertop+DEFAULT_AXIS_TITLE_SIZE,
                     textPaint);
         }
 
-
+        kChange.setNull();
         if (showDetails) {
-            int selectIndext = (int) ((width - 2.0f -touchX ) / mCandleWidth + mDataStartIndext);
-            int chooseIndext=(int) ((width - 2.0f - touchX) / mCandleWidth );
             float startX = (float) (width - 3 - mCandleWidth * chooseIndext - (mCandleWidth - 1) / 2);
 //            if (selectIndext>=kBeanList.size()){
 //                return ;

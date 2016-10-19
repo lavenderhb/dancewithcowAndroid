@@ -1,11 +1,12 @@
 package com.cn.fiveonefive.gphq.Fragment;
 
+import android.graphics.drawable.BitmapDrawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.view.Gravity;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.*;
@@ -54,10 +55,8 @@ public class FragmentK extends Fragment implements KChartsView.KChange{
     IKChange ikChange;
     int graytu;
 
-    private ArrayAdapter<String> mAdapter ;
-    private String [] mStringArray;
 
-    PopupMenu popup;
+    private PopupWindow popupWindow;
 
     TextView time,today,high,low,yest;
 
@@ -65,7 +64,6 @@ public class FragmentK extends Fragment implements KChartsView.KChange{
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         graytu=getResources().getColor(R.color.grayfortu);
-        mStringArray=getResources().getStringArray(R.array.choosetype);
     }
 
     @Nullable
@@ -76,25 +74,11 @@ public class FragmentK extends Fragment implements KChartsView.KChange{
         setListener();
 
         riList=new ArrayList<KBean>();
-//        getRiTask=new GetRiTask();
-//        getRiTask.execute("");
-
         zhouList=new ArrayList<KBean>();
-//        getZhouTask=new GetZhouTask();
-//        getZhouTask.execute("");
-
         yueList=new ArrayList<KBean>();
-//        getYueTask=new GetYueTask();
-//        getYueTask.execute("");
-
         riList2=new ArrayList<KBean>();
         zhouList2=new ArrayList<KBean>();
         yueList2=new ArrayList<KBean>();
-
-//        mAdapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_item);
-//        mAdapter.addAll(mStringArray);
-//        mAdapter.setDropDownViewResource(android.R.layout.preference_category);
-//        chooseSpin.setAdapter(mAdapter);
         return view;
     }
 
@@ -155,20 +139,7 @@ public class FragmentK extends Fragment implements KChartsView.KChange{
             @Override
             public void onClick(View v) {
                 //registering popup with OnMenuItemClickListener
-                popup.show();
-            }
-        });
-        popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
-            public boolean onMenuItemClick(MenuItem item) {
-                String chooseStr=item.getTitle().toString();
-                String old=chooseSpin.getText().toString();
-                if (chooseStr.equals(old))
-                    return true;
-                chooseSpin.setText(chooseStr);
-                riView.setTitle(chooseStr);
-                zhouView.setTitle(chooseStr);
-                yueView.setTitle(chooseStr);
-                return true;
+                showPopupWindow(v);
             }
         });
         radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
@@ -288,6 +259,70 @@ public class FragmentK extends Fragment implements KChartsView.KChange{
                 }
             }
         });
+    }
+
+    private void showPopupWindow(View v) {
+        //设置contentView
+        View contentView = LayoutInflater.from(getActivity()).inflate(R.layout.pop_view, null);
+
+        popupWindow = new PopupWindow(contentView,300,300, true);
+        popupWindow.setTouchable(true);
+        popupWindow.setBackgroundDrawable(new BitmapDrawable());
+        popupWindow.setOutsideTouchable(true);
+        popupWindow.setFocusable(true);
+        popupWindow.setContentView(contentView);
+        final TextView cjl =(TextView)contentView.findViewById(R.id.cjl);
+        final TextView macd=(TextView)contentView.findViewById(R.id.macd);
+        final TextView kdj =(TextView)contentView.findViewById(R.id.kdj);
+        cjl.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String chooseStr=cjl.getText().toString();
+                String old=chooseSpin.getText().toString();
+                if (chooseStr.equals(old))
+                    return ;
+                chooseSpin.setText(chooseStr);
+                riView.setTitle(chooseStr);
+                zhouView.setTitle(chooseStr);
+                yueView.setTitle(chooseStr);
+                if (popupWindow != null)
+                    popupWindow.dismiss();
+            }
+        });
+        macd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String chooseStr=macd.getText().toString();
+                String old=chooseSpin.getText().toString();
+                if (chooseStr.equals(old))
+                    return ;
+                chooseSpin.setText(chooseStr);
+                riView.setTitle(chooseStr);
+                zhouView.setTitle(chooseStr);
+                yueView.setTitle(chooseStr);
+                if (popupWindow != null)
+                    popupWindow.dismiss();
+            }
+        });
+        kdj.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String chooseStr=kdj.getText().toString();
+                String old=chooseSpin.getText().toString();
+                if (chooseStr.equals(old))
+                    return ;
+                chooseSpin.setText(chooseStr);
+                riView.setTitle(chooseStr);
+                zhouView.setTitle(chooseStr);
+                yueView.setTitle(chooseStr);
+                if (popupWindow != null)
+                    popupWindow.dismiss();
+            }
+        });
+        int[] location = new int[2];
+        v.getLocationOnScreen(location);
+        //显示PopupWindow
+        popupWindow.showAtLocation(v, Gravity.NO_GRAVITY, location[0]+2, location[1]-popupWindow.getHeight()-2);
     }
 
     private class GetRiTask extends AsyncTask<Object, Integer, Result> {
@@ -461,9 +496,6 @@ public class FragmentK extends Fragment implements KChartsView.KChange{
         up= (ImageView) view.findViewById(R.id.upBtn);
         down= (ImageView) view.findViewById(R.id.downBtn);
         chooseSpin= (TextView) view.findViewById(R.id.chooseType);
-        popup = new PopupMenu(getActivity().getBaseContext(), chooseSpin);
-        popup.getMenuInflater()
-                .inflate(R.menu.spinner_pop, popup.getMenu());
         time= (TextView) view.findViewById(R.id.time);
         today= (TextView) view.findViewById(R.id.todayopen);
         high= (TextView) view.findViewById(R.id.high);
@@ -486,6 +518,15 @@ public class FragmentK extends Fragment implements KChartsView.KChange{
     @Override
     public void changePage(int i) {
         ikChange.changePageK(i);
+    }
+
+    @Override
+    public void setNull() {
+        time.setText("");
+        today.setText("");
+        high.setText("");
+        low.setText("");
+        yest.setText("");
     }
 
 }

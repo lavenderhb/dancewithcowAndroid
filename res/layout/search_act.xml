@@ -50,10 +50,10 @@
                     android:layout_marginRight="10dp"
                     android:paddingLeft="32dp"
                     android:textSize="12sp"
-                    android:inputType="number"
+                    android:digits="0123456789abcdefghigklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
                     android:textColor="@color/black"
                     android:textColorHint="@color/dialog_text"
-                    android:hint="股票代码、首字母..."/>
+                    android:hint="请输入股票代码/简拼"/>
 
             <ImageView
                     android:id="@+id/ivDeleteText"

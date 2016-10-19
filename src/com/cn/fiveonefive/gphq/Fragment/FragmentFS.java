@@ -229,10 +229,23 @@ public class FragmentFS extends Fragment implements TimesView.ITimeChange{
                 textView[i].setTextColor(red);
             }else if (Float.parseFloat(textView[i].getText().toString())<Float.parseFloat(timeDataBeanChild.getYestclose())){
                 textView[i].setTextColor(green);
-            }if (textView[i].getText().toString().equals("0")){
+            }if (textView[i].getText().toString().equals("0.00")){
                 textView[i].setTextColor(white);
-                textView[i].setText("-");
+                textView[i].setText("--");
             }
+        }
+    }
+    private String zeroSet(String str){
+        try{
+            double d=Double.parseDouble(str);
+            if (d==0){
+                return "--";
+            }else {
+                return str;
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+            return "--";
         }
     }
 
@@ -312,6 +325,16 @@ public class FragmentFS extends Fragment implements TimesView.ITimeChange{
     public void changePage(int i) {
         iFsChange.changePageFS(i);
     }
+
+    @Override
+    public void setNull() {
+        time.setText("");
+        price.setText("");
+        avg.setText("");
+        upDownPrice.setText("");
+        upDownPercent.setText("");
+    }
+
     public interface IFsChange{
         void changePageFS(int i);
     }

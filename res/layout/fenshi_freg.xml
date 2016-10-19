@@ -15,7 +15,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="5dp"
-                        android:text="时间"
+                        android:text=""
                         android:textColor="@color/white"
                         android:textSize="10dp"
                 />
@@ -25,7 +25,7 @@
                         android:layout_height="wrap_content"
                         android:layout_toRightOf="@id/time"
                         android:layout_marginLeft="5dp"
-                        android:text="价格"
+                        android:text=""
                         android:textColor="@color/white"
                         android:textSize="10dp"
                 />
@@ -35,7 +35,7 @@
                         android:layout_height="wrap_content"
                         android:layout_toRightOf="@id/price"
                         android:layout_marginLeft="5dp"
-                        android:text="均价"
+                        android:text=""
                         android:textColor="@color/white"
                         android:textSize="10dp"
                 />
@@ -45,7 +45,7 @@
                         android:layout_height="wrap_content"
                         android:layout_toRightOf="@id/avg"
                         android:layout_marginLeft="5dp"
-                        android:text="涨跌"
+                        android:text=""
                         android:textColor="@color/white"
                         android:textSize="10dp"
                 />
@@ -55,7 +55,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="5dp"
                         android:layout_toRightOf="@id/upDownPrice"
-                        android:text="涨跌幅"
+                        android:text=""
                         android:textColor="@color/white"
                         android:textSize="10dp"
                 />
@@ -447,6 +447,7 @@
                 android:layout_alignRight="@id/time_view"
                 android:src="@drawable/to_close"
                 android:layout_alignTop="@id/time_view"
+                android:visibility="visible"
         />
 
 </RelativeLayout>

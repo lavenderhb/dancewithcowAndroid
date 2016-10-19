@@ -74,7 +74,7 @@ public class ActivitySearch extends AbActivity implements AbPullToRefreshView.On
         singleThreadExecutor = Executors.newSingleThreadExecutor();
 
         abPullToRefreshView= (AbPullToRefreshView) findViewById(R.id.mPullRefreshView);
-        abPullToRefreshView.setLoadMoreEnable(true);
+        abPullToRefreshView.setLoadMoreEnable(false);
         abPullToRefreshView.setPullRefreshEnable(false);
         abPullToRefreshView.setOnFooterLoadListener(this);
         im = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
@@ -168,7 +168,8 @@ public class ActivitySearch extends AbActivity implements AbPullToRefreshView.On
 
         @Override
         protected String doInBackground(String... keyWord) {
-            GetHttpResult getHttpResult=new GetHttpResult(GlobStr.SearchUrl+(GlobStr.SearchCountOfOnePage*page)+"&word="+keyWord[0]);
+            GetHttpResult getHttpResult=new GetHttpResult(GlobStr.SearchUrl+
+                    (GlobStr.SearchCountOfOnePage*page)+"&word="+keyWord[0]);
             Result result=getHttpResult.getResult();
             if(result.getResultCode()==0){
                 String str=result.getResultData();
@@ -270,7 +271,7 @@ public class ActivitySearch extends AbActivity implements AbPullToRefreshView.On
         @Override
         public void run() {
             GetHttpResult getHttpResult=new GetHttpResult(GlobStr.SearchUrl+
-                    (GlobStr.SearchCountOfOnePage*page)+"&word="+keyWord);
+                    (GlobStr.SearchCountOfOnePage)+"&word="+keyWord);
             Result result=getHttpResult.getResult();
             if(result.getResultCode()==0){
                 String str=result.getResultData();
@@ -303,9 +304,17 @@ public class ActivitySearch extends AbActivity implements AbPullToRefreshView.On
                     }
                     Gson gson=new Gson();
                     ArrayList<CXBean> cxBeanList = new ArrayList<>();
-                    for(Object item:newArray){
-                        CXBean cx=gson.fromJson((String) item, CXBean.class);
-                        cxBeanList.add(cx);
+                    try {
+                        for (Object item : newArray) {
+                            CXBean cx = gson.fromJson((String) item, CXBean.class);
+                            cxBeanList.add(cx);
+                        }
+                    }catch (Exception e){
+                        Message message=new Message();
+                        message.what=2;
+                        handler.sendMessage(message);
+                        e.printStackTrace();
+                        return;
                     }
                     for(int i=GlobStr.SearchCountOfOnePage*(page-1);i<cxBeanList.size();i++){
                         GuPiaoMainItem guPiaoMainItem=new GuPiaoMainItem();

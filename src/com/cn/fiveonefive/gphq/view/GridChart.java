@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.*;
 import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
 import com.cn.fiveonefive.gphq.R;
 
@@ -146,7 +147,7 @@ public class GridChart extends View {
 		setBackgroundResource(mBackGround);
 		int viewHeight = getHeight();
 		int viewWidth = getWidth();
-		mLowerChartHeight = viewHeight - 2 - LOWER_CHART_TOP;
+
 		if (showLowerChartTabs) {
 			mTabHight = viewHeight / 16.0f;
 		}
@@ -163,7 +164,9 @@ public class GridChart extends View {
 		mUperChartHeight = latitudeSpacing * (DEFAULT_UPER_LATITUDE_NUM + 1);
 		LOWER_CHART_TOP = viewHeight - 1 - latitudeSpacing * (DEFAULT_LOWER_LATITUDE_NUM + 1);
 		UPER_CHART_BOTTOM = 1 + topTitleHeight + latitudeSpacing * (DEFAULT_UPER_LATITUDE_NUM + 1);
-
+		mLowerChartHeight = viewHeight - 2 - LOWER_CHART_TOP;
+		Log.d("grid-viewHeight", viewHeight+"");
+		Log.d("grid-LOWER_CHART_TOP", LOWER_CHART_TOP+"");
 		// 绘制边框
 		drawBorders(canvas, viewHeight, viewWidth);
 
